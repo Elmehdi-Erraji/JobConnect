@@ -2,11 +2,9 @@
 
 namespace App\Models;
 
-use Database\Seeders\UserSeeder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
 
 class Profile extends Model
 {
@@ -18,6 +16,8 @@ class Profile extends Model
         'motivation',
         'city',
         'user_id',
+        'education_level_id',
+        'profession_id',
     ];
 
     public function user()
@@ -38,5 +38,15 @@ class Profile extends Model
     public function formations()
     {
         return $this->belongsToMany(Formation::class)->withTimestamps();
-    } 
+    }
+
+    public function educationLevel()
+    {
+        return $this->belongsTo(EducationLevel::class);
+    }
+
+    public function profession()
+    {
+        return $this->belongsTo(Profession::class);
+    }
 }
