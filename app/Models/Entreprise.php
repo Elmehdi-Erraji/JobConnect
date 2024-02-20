@@ -6,15 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Profession extends Model
+class Entreprise extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory,SoftDeletes;
 
-    protected $fillable = ['name']; 
 
-    public function profiles()
+    protected $fillable = ['name', 'description', 'status', 'media'];
+
+    public function users()
     {
-        return $this->hasMany(Profile::class);
+        return $this->hasMany(User::class);
     }
 
     public function offers()

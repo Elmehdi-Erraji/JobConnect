@@ -17,8 +17,8 @@ class EducationLevel extends Model
         return $this->hasMany(Profile::class);
     }
 
-    // public function offers()
-    // {
-    //     return $this->hasMany(Offer::class);
-    // }
+    public function offers()
+    {
+        return $this->hasMany(Offer::class);
+    }
 }
