@@ -16,34 +16,20 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
         DB::table('roles')->truncate();
-        DB::table('permissions')->truncate();
 
-        $permissions = [
-            'user_access',
-            'user_edit',
-            'user_delete',
-            'user_create',
-            // Add more permissions as needed
-        ];
 
-        foreach ($permissions as $permissionName) {
-            Permission::create(['name' => $permissionName]);
-        }
+        $permissions = Permission::all()->pluck('id')->toArray();
 
         $roles = [
-            'admin' => ['user_access', 'user_edit', 'user_delete', 'user_create'],
-            'responsabel' => ['user_access', 'user_create'],
-            'recruter' => ['user_access'],
-            'condidat' => ['user_access'],
+            'admin',
+            'responsable',
+            'recruiter',
+            'candidate',
         ];
 
-        foreach ($roles as $roleName => $permissionNames) {
-            // Create role
-            $role = Role::create(['name' => $roleName]);
-
-            // Attach random permissions to the role
-            $permissions = Permission::whereIn('name', $permissionNames)->pluck('id');
-            $role->permissions()->attach($permissions);
+        foreach ($roles as $roleName) {
+            $role = Role::Create(['name' => $roleName]);
+            $role->permissions()->sync($permissions);
         }
     }
 }
