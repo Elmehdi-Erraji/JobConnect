@@ -29,9 +29,9 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::resource('skills', \App\Http\Controllers\Admin\SkillController::class);
 Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
 Route::resource('skills', \App\Http\Controllers\Admin\SkillController::class);
+Route::resource('contracts', \App\Http\Controllers\Admin\ContractController::class);
 
 require __DIR__.'/auth.php';
 
@@ -107,9 +107,6 @@ Route::get('/entreprise/edit', function () {
 //
 //
 //
-Route::get('/skills', function () {
-    return view('admin.skills.index');
-})->name('admin.skills.index');
 
 
 Route::get('/profession', function () {
@@ -117,9 +114,6 @@ Route::get('/profession', function () {
 })->name('admin.profession.index');
 
 
-Route::get('/contract', function () {
-    return view('admin.contract.index');
-})->name('admin.contract.index');
 
 Route::get('/education_level', function () {
     return view('admin.education_level.index');
