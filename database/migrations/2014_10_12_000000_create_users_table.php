@@ -21,11 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->integer('status');
 
-            $table->foreignId('entreprise_id')
-                ->nullable()
-                ->constrained('entreprises')
-                ->onDelete('cascade');
-
+            
             
             $table->rememberToken();
             $table->timestamps();

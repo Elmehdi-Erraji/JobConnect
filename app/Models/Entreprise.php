@@ -11,15 +11,16 @@ class Entreprise extends Model
     use HasFactory,SoftDeletes;
 
 
-    protected $fillable = ['name', 'description', 'status', 'media'];
+    protected $fillable = ['name', 'description', 'status', 'user_id','media'];
 
-    public function users()
+    public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function offers()
     {
         return $this->hasMany(Offer::class);
     }
+    
 }

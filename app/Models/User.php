@@ -56,8 +56,9 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
     
+
     public function entreprise()
     {
-        return $this->belongsTo(Entreprise::class);
+        return $this->hasOne(Entreprise::class);
     }
 }
