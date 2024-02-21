@@ -20,8 +20,8 @@
     </a>
 
     <!-- Sidebar -left -->
-    <div class="h-100" id="leftside-menu-container" data-simplebar>
-        <!-- Sidemenu -->
+    <div class="h-100" id="leftside-menu-container" >
+
         <ul class="side-nav">
             <li class="side-nav-title">Main</li>
 
@@ -39,23 +39,7 @@
                 </a>
             </li>
 
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarUsers" aria-expanded="false" aria-controls="sidebarUsers" class="side-nav-link">
-                    <i class="ri-group-2-line"></i>
-                    <span> Users </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="sidebarUsers">
-                    <ul class="side-nav-third-level">
-                        <li>
-                            <a href="{{route('users.create')}}">Add A User</a>
-                        </li>
-                        <li>
-                            <a href="{{route('users.index')}}">Users List</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+
 
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarPartners" aria-expanded="false" aria-controls="sidebarUsers" class="side-nav-link">
@@ -193,6 +177,23 @@
                     <ul class="side-nav-third-level">
                         <li>
                             <a href="{{route('profession.index')}}">Profession List</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarUsers" aria-expanded="false" aria-controls="sidebarUsers" class="side-nav-link">
+                    <i class="ri-group-2-line"></i>
+                    <span> Users </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarUsers">
+                    <ul class="side-nav-third-level">
+                        <li>
+                            <a href="{{route('users.create')}}">Add A User</a>
+                        </li>
+                        <li>
+                            <a href="{{route('users.index')}}">Users List</a>
                         </li>
                     </ul>
                 </div>

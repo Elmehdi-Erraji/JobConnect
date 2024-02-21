@@ -33,6 +33,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = User::create($request->all());
+        $user->addMediaFromRequest('avatar')->usingName($user->name)->toMediaCollection('avatars');
         $user->roles()->attach($request->role);
         return redirect()->route('users.index')->with('success', 'user created successfully');
     }
@@ -42,7 +43,8 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('admin.users.show',compact('user'));
     }
 
     /**
@@ -52,7 +54,6 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $roles = role::all();
-
         return view ('Admin.users.edit', compact('user','roles'));
     }
 
@@ -63,16 +64,15 @@ class UserController extends Controller
     {
         $user->roles()->sync($request->role);
         $user->status = $request->status;
+        $user->ban_reason = $request->ban_reason;
         $user->save();
         return redirect()->route('users.index')->with('success','user has been updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+
+    public function destroy(User $user)
     {
-        $user->dlete();
+        $user->delete();
         return redirect()->route('users.index')->with('success','user deleted successfully');
     }
 }

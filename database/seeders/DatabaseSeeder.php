@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Http\Controllers\Admin\ContractController;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,6 +19,8 @@ class DatabaseSeeder extends Seeder
             SkillsTableSeeder::class,
             EducationLevelsTableSeeder::class,
             ProfessionsTableSeeder::class,
+            CategoriesTableSeeder::class,
+            ContratsTableSeeder::class,
         ]);
     }
 }

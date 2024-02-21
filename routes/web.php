@@ -35,6 +35,9 @@ Route::resource('contracts', \App\Http\Controllers\Admin\ContractController::cla
 Route::resource('profession', \App\Http\Controllers\Admin\ProfessionController::class);
 Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
 
+
+Route::resource('profile', \App\Http\Controllers\ProfileController::class);
+
 require __DIR__.'/auth.php';
 
 
