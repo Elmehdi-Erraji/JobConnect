@@ -107,25 +107,8 @@ Route::get('/entreprise/edit', function () {
 
 
 
-Route::get('/skills', function () {
-    return view('admin.skills.index');
-})->name('admin.skills.index');
 
 
-Route::get('/profession', function () {
-    return view('admin.profession.index');
-})->name('admin.profession.index');
 
 
-Route::get('/contract', function () {
-    return view('admin.contract.index');
-})->name('admin.contract.index');
-
-Route::get('/education_level', function () {
-    return view('admin.education_level.index');
-})->name('admin.education_level.index');
-
-Route::get('/category', function () {
-    return view('admin.category.index');
-})->name('admin.category.index');
 
