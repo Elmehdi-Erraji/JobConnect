@@ -18,8 +18,10 @@ class SkillController extends Controller
 {
     $skills = Skill::all();
 
-    return view('admin.skills.index', compact('skills'));
-}
+        return view('admin.skills.index', compact('skills'));
+    }
+
+   
 
     /**
      * Show the form for creating a new resource.
