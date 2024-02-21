@@ -29,6 +29,33 @@ return [
     */
 
     'disks' => [
+        'avatars' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/avatars'),
+            'url' => env('APP_URL').'/storage/avatars',
+            'visibility' => 'public',
+        ],
+
+        'cvs' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/cvs'),
+            'url' => env('APP_URL').'/storage/cvs',
+            'visibility' => 'public',
+        ],
+
+        'enterprise_videos' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/enterprise_videos'),
+            'url' => env('APP_URL').'/storage/enterprise_videos',
+            'visibility' => 'public',
+        ],
+
+        'enterprise_images' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/enterprise_images'),
+            'url' => env('APP_URL').'/storage/enterprise_images',
+            'visibility' => 'public',
+        ],
 
         'local' => [
             'driver' => 'local',
@@ -57,6 +84,7 @@ return [
         ],
 
     ],
+
 
     /*
     |--------------------------------------------------------------------------
