@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
 
 
 Route::resource('skills', \App\Http\Controllers\Admin\SkillController::class);
-Route::resource('category', \App\Http\Controllers\Admin\ProfessionController::class);
+Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
 Route::resource('skills', \App\Http\Controllers\Admin\SkillController::class);
 
 require __DIR__.'/auth.php';
@@ -59,20 +59,20 @@ require __DIR__.'/auth.php';
 
 
 
-
-
-
-
-
-
-
-Route::get('/dashboard', function () {
-    return view('admin.index');
-})->name('admin.index');
-
-
-
-
+//
+//
+//
+//
+//
+//
+//
+//Route::get('/dashboard', function () {
+//    return view('admin.index');
+//})->name('admin.index');
+//
+//
+//
+//
 Route::get('/users', function () {
     return view('admin.users.index');
 })->name('admin.users.index');
@@ -88,7 +88,7 @@ Route::get('/users/edit', function () {
 })->name('admin.users.edit');
 
 
-
+//
 Route::get('/entreprise', function () {
     return view('admin.entreprise.index');
 })->name('admin.entreprise.index');
@@ -104,9 +104,9 @@ Route::get('/entreprise/edit', function () {
 })->name('admin.entreprise.edit');
 
 
-
-
-
+//
+//
+//
 Route::get('/skills', function () {
     return view('admin.skills.index');
 })->name('admin.skills.index');
@@ -125,7 +125,7 @@ Route::get('/education_level', function () {
     return view('admin.education_level.index');
 })->name('admin.education_level.index');
 
-Route::get('/category', function () {
-    return view('admin.category.index');
-})->name('admin.category.index');
-
+//Route::get('/category', function () {
+//    return view('admin.category.index');
+//})->name('admin.category.index');
+//

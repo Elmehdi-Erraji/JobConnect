@@ -33,7 +33,7 @@
             </li>
 
             <li class="side-nav-item">
-                <a href="{{route('admin.index')}}" class="side-nav-link">
+                <a href="" class="side-nav-link">
                     <i class="ri-dashboard-3-line"></i>
                     <span> Dashboard </span>
                 </a>
@@ -139,7 +139,7 @@
                 <div class="collapse" id="sidebarCategory">
                     <ul class="side-nav-third-level">
                         <li>
-                            <a href="{{route('admin.category.index')}}">Categories list</a>
+                            <a href="{{route('category.index')}}">Categories list</a>
                         </li>
 
                     </ul>
