@@ -111,16 +111,17 @@
                                                         <h4 class="card-title fs-22"><strong>Full Stack Developer</strong></h4>
                                                         <p class="card-text"><strong>Company:</strong> Company Name</p>
                                                         <p class="card-text"><strong>City:</strong> City Name</p>
-                                                        <p class="card-text"><strong>Details:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.consectetur adipiscing elit.consectetur adipiscing elit.consectetur adipiscing elit.consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                        
+                                                        <p class="card-text"><strong>Details:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                                     </div>
+                                                </div>
+                                                
+                                                <div class="card mt-3">
                                                     <div class="card-body">
                                                         <h5 class="mb-3">January 2019 - Present</h5>
                                                         <h4 class="card-title fs-22"><strong>Full Stack Developer</strong></h4>
                                                         <p class="card-text"><strong>Company:</strong> Company Name</p>
                                                         <p class="card-text"><strong>City:</strong> City Name</p>
-                                                        <p class="card-text"><strong>Details:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.consectetur adipiscing elit.consectetur adipiscing elit.consectetur adipiscing elit.consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                        
+                                                        <p class="card-text"><strong>Details:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                                     </div>
                                                 </div>
                                             </div>
