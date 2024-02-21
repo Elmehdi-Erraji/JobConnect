@@ -105,48 +105,48 @@
                                     </tr>
                                     </thead>
                                     <tbody id="tableBody">
-{{--                                    @foreach ($users as $user)--}}
-{{--                                        <tr>--}}
-{{--                                            <td>{{ $user->id }}</td>--}}
-{{--                                            <td>--}}
-{{--                                                @if ($user->getFirstMedia('avatars'))--}}
-{{--                                                    <img src="{{ $user->getFirstMedia('avatars')->getUrl() }}" class="rounded-circle" alt="Avatar" width="50">--}}
-{{--                                                @else--}}
-{{--                                                    No image--}}
-{{--                                                @endif--}}
-{{--                                            </td>--}}
-{{--                                            <td>{{ $user->name }}</td>--}}
-{{--                                            <td>{{ $user->email }}</td>--}}
-{{--                                            <td>{{ $user->phone }}</td>--}}
+                                    {{--                                    @foreach ($users as $user)--}}
+                                    {{--                                        <tr>--}}
+                                    {{--                                            <td>{{ $user->id }}</td>--}}
+                                    {{--                                            <td>--}}
+                                    {{--                                                @if ($user->getFirstMedia('avatars'))--}}
+                                    {{--                                                    <img src="{{ $user->getFirstMedia('avatars')->getUrl() }}" class="rounded-circle" alt="Avatar" width="50">--}}
+                                    {{--                                                @else--}}
+                                    {{--                                                    No image--}}
+                                    {{--                                                @endif--}}
+                                    {{--                                            </td>--}}
+                                    {{--                                            <td>{{ $user->name }}</td>--}}
+                                    {{--                                            <td>{{ $user->email }}</td>--}}
+                                    {{--                                            <td>{{ $user->phone }}</td>--}}
 
-{{--                                            <td>--}}
-{{--                                                @if ($user->status === 0)--}}
-{{--                                                    <span class="badge bg-info-subtle text-info">Pending</span>--}}
-{{--                                                @elseif ($user->status === 1)--}}
-{{--                                                    <span class="badge bg-warning-subtle text-warning">Active</span>--}}
-{{--                                                @elseif ($user->status === 2)--}}
-{{--                                                    <span class="badge bg-pink-subtle text-pink ">Banned</span>--}}
-{{--                                                @else--}}
-{{--                                                    <span class="badge bg-warning">Unknown Status</span>--}}
-{{--                                                @endif--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                @if ($user->roles()->exists())--}}
-{{--                                                    {{ $user->roles()->first()->name }}--}}
-{{--                                                @endif--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-primary">Edit</a>--}}
-{{--                                                <a href="{{ route('users.show', $user->id) }}" class="btn btn-sm btn-success">View Details</a>--}}
+                                    {{--                                            <td>--}}
+                                    {{--                                                @if ($user->status === 0)--}}
+                                    {{--                                                    <span class="badge bg-info-subtle text-info">Pending</span>--}}
+                                    {{--                                                @elseif ($user->status === 1)--}}
+                                    {{--                                                    <span class="badge bg-warning-subtle text-warning">Active</span>--}}
+                                    {{--                                                @elseif ($user->status === 2)--}}
+                                    {{--                                                    <span class="badge bg-pink-subtle text-pink ">Banned</span>--}}
+                                    {{--                                                @else--}}
+                                    {{--                                                    <span class="badge bg-warning">Unknown Status</span>--}}
+                                    {{--                                                @endif--}}
+                                    {{--                                            </td>--}}
+                                    {{--                                            <td>--}}
+                                    {{--                                                @if ($user->roles()->exists())--}}
+                                    {{--                                                    {{ $user->roles()->first()->name }}--}}
+                                    {{--                                                @endif--}}
+                                    {{--                                            </td>--}}
+                                    {{--                                            <td>--}}
+                                    {{--                                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-primary">Edit</a>--}}
+                                    {{--                                                <a href="{{ route('users.show', $user->id) }}" class="btn btn-sm btn-success">View Details</a>--}}
 
-{{--                                                <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline">--}}
-{{--                                                    @csrf--}}
-{{--                                                    @method('DELETE')--}}
-{{--                                                    <button type="submit" class="btn btn-sm btn-danger  delete-btn">Delete</button>--}}
-{{--                                                </form>--}}
-{{--                                            </td>--}}
-{{--                                        </tr>--}}
-{{--                                    @endforeach--}}
+                                    {{--                                                <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline">--}}
+                                    {{--                                                    @csrf--}}
+                                    {{--                                                    @method('DELETE')--}}
+                                    {{--                                                    <button type="submit" class="btn btn-sm btn-danger  delete-btn">Delete</button>--}}
+                                    {{--                                                </form>--}}
+                                    {{--                                            </td>--}}
+                                    {{--                                        </tr>--}}
+                                    {{--                                    @endforeach--}}
                                     </tbody>
                                 </table>
                                 @if (Session::has('success'))
