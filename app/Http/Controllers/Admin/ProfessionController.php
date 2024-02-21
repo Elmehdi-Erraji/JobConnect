@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Profession;
 use App\Http\Requests\CreateProfessionRequest;
 use Illuminate\Http\Request;

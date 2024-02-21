@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Entreprise;
 use App\Http\Requests\CreateEntrepriseRequest;
 use Illuminate\Http\Request;
