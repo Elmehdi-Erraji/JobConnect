@@ -66,11 +66,11 @@
 
                                     <div class="mb-3">
                                         <label for="user_role" class="form-label">User Role</label>
-{{--                                        <select class="form-select @error('user_role') is-invalid @enderror" id="user_role" name="role">--}}
-{{--                                            @foreach ($roles as $role)--}}
-{{--                                                <option value="{{ $role->id }}">{{ $role->name }}</option>--}}
-{{--                                            @endforeach--}}
-{{--                                        </select>--}}
+                                        <select class="form-select @error('user_role') is-invalid @enderror" id="user_role" name="role">
+                                            @foreach ($roles as $role)
+                                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                            @endforeach
+                                        </select>
                                         @error('user_role')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror

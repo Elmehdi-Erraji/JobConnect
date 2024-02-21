@@ -8,7 +8,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
-
     <!-- Start Content-->
     <div class="container-fluid">
         <!-- start page title -->
@@ -41,7 +40,7 @@
                             </div>
                         </div>
 
-                        <div class="table-responsive">
+                        <div class="table-responsive mt-3">
                             <table class="table table-nowrap table-hover mb-0">
                                 <thead>
                                 <tr>
@@ -67,6 +66,9 @@
                                 </tbody>
                             </table>
                         </div>
+
+
+
                         @if (Session::has('success'))
                             <script>
                                 console.log("SweetAlert initialization script executed!");
