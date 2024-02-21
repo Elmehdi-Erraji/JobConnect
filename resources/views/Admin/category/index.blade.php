@@ -34,7 +34,7 @@
                         <div class="p-3">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <button type="button" class="btn btn-primary" style="width: 30%" data-bs-toggle="modal" data-bs-target="#add-category-modal">Add A Category</button>
+                                    <button type="button" class="btn btn-primary" style="width: 40%" data-bs-toggle="modal" data-bs-target="#add-category-modal">Add A Category</button>
 
                                 </div>
                             </div>
