@@ -104,22 +104,4 @@ Route::get('/entreprise/edit', function () {
 })->name('admin.entreprise.edit');
 
 
-//
-//
-//
 
-
-Route::get('/profession', function () {
-    return view('admin.profession.index');
-})->name('admin.profession.index');
-
-
-
-Route::get('/education_level', function () {
-    return view('admin.education_level.index');
-})->name('admin.education_level.index');
-
-//Route::get('/category', function () {
-//    return view('admin.category.index');
-//})->name('admin.category.index');
-//
