@@ -155,7 +155,7 @@
                 <div class="collapse" id="sidebarSkills">
                     <ul class="side-nav-third-level">
                         <li>
-                            <a href="{{route('admin.skills.index')}}">Skill List</a>
+                            <a href="{{route('skills.index')}}">Skill List</a>
                         </li>
 
                     </ul>

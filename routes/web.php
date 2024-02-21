@@ -107,9 +107,6 @@ Route::get('/entreprise/edit', function () {
 
 
 
-Route::get('/skills', function () {
-    return view('admin.skills.index');
-})->name('admin.skills.index');
 
 
 Route::get('/profession', function () {
