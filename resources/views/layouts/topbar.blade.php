@@ -6,9 +6,6 @@
             <div class="logo-topbar">
                 <!-- Logo light -->
                 <a href="{{ url('/') }}" class="logo-light">
-                    <span class="logo-lg">
-                        <img src="{{ asset('assets/images/logo.png') }}" alt="logo">
-                    </span>
                     <span class="logo-sm">
                         <img src="{{ asset('assets/images/logo-sm.png') }}" alt="small logo">
                     </span>
@@ -16,9 +13,6 @@
 
                 <!-- Logo Dark -->
                 <a href="{{ url('/') }}" class="logo-dark">
-                    <span class="logo-lg">
-                        <img src="{{ asset('assets/images/logo-dark.png') }}" alt="dark logo">
-                    </span>
                     <span class="logo-sm">
                         <img src="{{ asset('assets/images/logo-sm.png') }}" alt="small logo">
                     </span>
@@ -54,14 +48,14 @@
                 <a class="nav-link dropdown-toggle arrow-none nav-user" data-bs-toggle="dropdown" href="#" role="button"
                    aria-haspopup="false" aria-expanded="false">
                     <span class="account-user-avatar">
-                       @if (Auth::user()->getFirstMedia('avatars'))
-                            <img src="{{ Auth::user()->getFirstMedia('avatars')->getUrl() }}" class="rounded-circle" alt="Avatar" width="50">
-                        @else
+
+                            <img src="" class="rounded-circle" alt="Avatar" width="50">
+
                             <i class="ri-account-circle-line fs-18 align-middle me-1"></i>
-                        @endif
+
                     </span>
                     <span class="d-lg-block d-none">
-                        <h5 class="my-0 fw-normal">{{ Auth::user()->name }} <i
+                        <h5 class="my-0 fw-normal"> <i
                                 class="ri-arrow-down-s-line d-none d-sm-inline-block align-middle"></i></h5>
                     </span>
                 </a>
@@ -72,7 +66,7 @@
                     </div>
 
                     <!-- item-->
-                    <a href="{{route('profile.index')}}" class="dropdown-item">
+                    <a href="" class="dropdown-item">
                         <i class="ri-account-circle-line fs-18 align-middle me-1"></i>
                         <span>My Account</span>
                     </a>
