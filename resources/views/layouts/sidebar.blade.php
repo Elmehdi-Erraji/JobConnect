@@ -139,7 +139,7 @@
                 <div class="collapse" id="sidebarCategory">
                     <ul class="side-nav-third-level">
                         <li>
-                            <a href="{{route('admin.category.index')}}">Categories list</a>
+                            <a href="">Categories list</a>
                         </li>
 
                     </ul>
@@ -172,7 +172,7 @@
                     <ul class="side-nav-third-level">
 
                         <li>
-                            <a href="{{route('admin.contract.index')}}">Contract List</a>
+                            <a href="">Contract List</a>
                         </li>
 
                     </ul>
@@ -188,10 +188,7 @@
                 <div class="collapse" id="sidebarProfession">
                     <ul class="side-nav-third-level">
                         <li>
-                            <a href="#">Profession 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Profession 2</a>
+                            <a href="{{route('profession.index')}}">Profession List</a>
                         </li>
                     </ul>
                 </div>
