@@ -48,10 +48,10 @@
                 <div class="collapse" id="sidebarUsers">
                     <ul class="side-nav-third-level">
                         <li>
-                            <a href="{{route('admin.users.create')}}">Add A User</a>
+                            <a href="{{route('users.create')}}">Add A User</a>
                         </li>
                         <li>
-                            <a href="{{route('admin.users.index')}}">Users List</a>
+                            <a href="{{route('users.index')}}">Users List</a>
                         </li>
                     </ul>
                 </div>
@@ -84,10 +84,10 @@
                 <div class="collapse" id="sidebarManagers">
                     <ul class="side-nav-third-level">
                         <li>
-                            <a href="{{route('admin.users.create')}}">Add A Manager</a>
+                            <a href="{{route('users.create')}}">Add A Manager</a>
                         </li>
                         <li>
-                            <a href="{{route('admin.users.index')}}">Managers List</a>
+                            <a href="{{route('users.index')}}">Managers List</a>
                         </li>
                     </ul>
                 </div>

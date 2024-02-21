@@ -32,6 +32,8 @@ Route::middleware('auth')->group(function () {
 Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
 Route::resource('skills', \App\Http\Controllers\Admin\SkillController::class);
 Route::resource('contracts', \App\Http\Controllers\Admin\ContractController::class);
+Route::resource('profession', \App\Http\Controllers\Admin\ProfessionController::class);
+Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
 
 require __DIR__.'/auth.php';
 
@@ -59,33 +61,6 @@ require __DIR__.'/auth.php';
 
 
 
-//
-//
-//
-//
-//
-//
-//
-//Route::get('/dashboard', function () {
-//    return view('admin.index');
-//})->name('admin.index');
-//
-//
-//
-//
-Route::get('/users', function () {
-    return view('admin.users.index');
-})->name('admin.users.index');
-
-
-Route::get('/users/create', function () {
-    return view('admin.users.create');
-})->name('admin.users.create');
-
-
-Route::get('/users/edit', function () {
-    return view('admin.users.edit');
-})->name('admin.users.edit');
 
 
 //
