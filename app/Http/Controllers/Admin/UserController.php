@@ -60,14 +60,22 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    // public function update(Request $request, string $id)
-    // {
-    //     $user->roles()->sync($request->role);
-    //     $user->status = $request->status;
-    //     $user->ban_reason = $request->ban_reason;
-    //     $user->save();
-    //     return redirect()->route('users.index')->with('success','user has been updated successfully');
-    // }
+    public function update(Request $request, string $id)
+    {
+        $user = User::findOrFail($id);
+        
+        $user->roles()->sync($request->role);
+        $user->status = $request->status;
+    
+        // Check if the user is banned and reason field is provided
+        if ($request->status == 2 && $request->filled('ban_reason')) {
+            $user->ban_reason = $request->ban_reason;
+        }
+    
+        $user->save();
+        
+        return redirect()->route('users.index')->with('success', 'User has been updated successfully');
+    }
 
 
     public function destroy(User $user)
