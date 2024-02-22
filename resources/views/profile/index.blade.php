@@ -72,8 +72,6 @@
                             <ul class="nav nav-underline nav-justified gap-0">
                                 <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" data-bs-target="#aboutme" type="button" role="tab" aria-controls="home" aria-selected="true" href="#aboutme">Profile</a></li>
                                 <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" data-bs-target="#edit-profile" type="button" role="tab" aria-controls="home" aria-selected="true" href="#edit-profile">Personal Info</a></li>
-                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" data-bs-target="#user-activities" type="button" role="tab" aria-controls="home" aria-selected="true" href="#user-activities">Experience</a></li>
-                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" data-bs-target="#projects" type="button" role="tab" aria-controls="home" aria-selected="true" href="#projects">Education</a></li>
                             </ul>
 
                             <div class="tab-content m-0 p-4">
@@ -86,11 +84,12 @@
                                                 <div class="mt-4">
                                                     <h4 class="fs-20 text-dark">Contact Information</h4>
                                                     <p class="text-muted fs-16"><strong>Email:</strong> <a href="mailto:{{ $user->email }}">{{ $user->email }}</a></p>
-                                                    <p class="text-muted fs-16"><strong>Phone:</strong> {{ $user->phone }}</p>
+                                                    <p class="text-muted fs-16"><strong>Phone:</strong> <a href="tel:{{ $user->phone }}">{{ $user->phone }}</a></p>
+
                                                 </div>
                                                 <div class="mt-4">
                                                     <h4 class="fs-20 text-dark">About Me</h4>
-                                                    <p class="text-muted fs-16">Hey, I'm [Your Name], a full stack developer passionate about crafting engaging web experiences. With expertise in both front-end and back-end technologies, I love turning ideas into reality through clean code and creative problem-solving. Let's build something awesome together!</p>
+                                                    <p class="text-muted fs-16">{{$userProfile->motivation}}</p>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 text-end">
@@ -103,54 +102,7 @@
                                         </div>
                                     </div>
                                 
-                                    <!-- Experience Section -->
-                                    <div class="mt-5">
-                                        <h3 class="text-dark mb-3 fs-24">Experience</h3>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <h5 class="mb-3">January 2019 - Present</h5>
-                                                        <h4 class="card-title fs-22"><strong>Full Stack Developer</strong></h4>
-                                                        <p class="card-text"><strong>Company:</strong> Company Name</p>
-                                                        <p class="card-text"><strong>City:</strong> City Name</p>
-                                                        <p class="card-text"><strong>Details:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="card mt-3">
-                                                    <div class="card-body">
-                                                        <h5 class="mb-3">January 2019 - Present</h5>
-                                                        <h4 class="card-title fs-22"><strong>Full Stack Developer</strong></h4>
-                                                        <p class="card-text"><strong>Company:</strong> Company Name</p>
-                                                        <p class="card-text"><strong>City:</strong> City Name</p>
-                                                        <p class="card-text"><strong>Details:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                
-                                    <!-- Formation Section -->
-                                    <div class="mt-5">
-                                        <h3 class="text-dark mb-3 fs-24">Formation</h3>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                       
-                                                        <h5 class="card-title fs-22"><strong>Engineering degree</strong></h5>
-                                                        <h5 class="mb-3">January 2019 - Jully 2024</h5>
-                                                        <p class="card-text"><strong>School:</strong> ENSA </p>
-                                                        <p class="card-text"><strong>City:</strong> Agadir</p>
-                                                        <p class="card-text"><strong>Details:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end profile-desk -->
+                                    
                                 </div>
                                 
 
@@ -228,104 +180,6 @@
                                                 <button class="btn btn-primary" type="submit"><i class="ri-save-line me-1 fs-16 lh-1"></i> Save</button>
                                             </form>
                                            
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div id="user-activities" class="tab-pane">
-                                    <div class="row m-t-10">
-                                        <div class="col-md-12">
-                                            <form action="" method="POST" id="profileForm" enctype="multipart/form-data">
-                                                @csrf
-                                                @method('PUT')
-                                                <div class="row row-cols-sm-2 row-cols-1">
-                                                    <!-- Other fields -->
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="position">Position</label>
-                                                        <input type="text" id="position" name="position" class="form-control" value="{{ old('position') }}" required>
-                                                        @error('position')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="company">Company Name</label>
-                                                        <input type="text" id="company" name="company" class="form-control" value="{{ old('company') }}" required>
-                                                        @error('company')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="start_date">Start Date</label>
-                                                        <input type="date" id="start_date" name="start_date" class="form-control" value="{{ old('start_date') }}" required>
-                                                        @error('start_date')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="end_date">End Date</label>
-                                                        <input type="date" id="end_date" name="end_date" class="form-control" value="{{ old('end_date') }}" required>
-                                                        @error('end_date')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                   
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="description">Description</label>
-                                                        <textarea id="description" name="description" class="form-control" required>{{ old('description') }}</textarea>
-                                                        @error('description')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                    <!-- Other fields -->
-                                                </div>
-                                                <button class="btn btn-primary" type="submit"><i class="ri-save-line me-1 fs-16 lh-1"></i> Save</button>
-                                            </form>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div id="projects" class="tab-pane">
-                                    <!-- Content for the "Projects" tab -->
-                                    <div class="row m-t-10">
-                                        <div class="col-md-12">
-                                            <form action="" method="POST" id="educationForm">
-                                                @csrf
-                                                @method('PUT')
-                                                <div class="row">
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="degree_title">Degree Title</label>
-                                                        <input type="text" id="degree_title" name="degree_title" class="form-control" value="{{ old('degree_title') }}" required>
-                                                        @error('degree_title')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="university">University</label>
-                                                        <input type="text" id="university" name="university" class="form-control" value="{{ old('university') }}" required>
-                                                        @error('university')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="start_date">Start Date</label>
-                                                        <input type="date" id="start_date" name="start_date" class="form-control" value="{{ old('start_date') }}" required>
-                                                        @error('start_date')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="end_date">End Date</label>
-                                                        <input type="date" id="end_date" name="end_date" class="form-control" value="{{ old('end_date') }}" required>
-                                                        @error('end_date')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <button class="btn btn-primary" type="submit"><i class="ri-save-line me-1 fs-16 lh-1"></i> Save</button>
-                                            </form>
-                                            
                                         </div>
                                     </div>
                                 </div>

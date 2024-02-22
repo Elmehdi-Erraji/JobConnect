@@ -70,48 +70,26 @@ class ProfileController extends Controller
 
 
 
+    
 
-    // public function edit(Request $request): View
-    // {
-    //     return view('profile.edit', [
-    //         'user' => $request->user(),
-    //     ]);
-    // }
+   
+    public function destroy(Request $request): RedirectResponse
+    {
+        $request->validateWithBag('userDeletion', [
+            'password' => ['required', 'current_password'],
+        ]);
 
-    /**
-     * Update the user's profile information.
-     */
-    // public function update(ProfileUpdateRequest $request): RedirectResponse
-    // {
-    //     $request->user()->fill($request->validated());
+        $user = $request->user();
 
-    //     if ($request->user()->isDirty('email')) {
-    //         $request->user()->email_verified_at = null;
-    //     }
+        Auth::logout();
 
-    //     $request->user()->save();
+        $user->delete();
 
-    //     return Redirect::route('profile.edit')->with('status', 'profile-updated');
-    // }
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-    /**
-     * Delete the user's account.
-     */
-    // public function destroy(Request $request): RedirectResponse
-    // {
-    //     $request->validateWithBag('userDeletion', [
-    //         'password' => ['required', 'current_password'],
-    //     ]);
+        return Redirect::to('/');
+    }
 
-    //     $user = $request->user();
 
-    //     Auth::logout();
-
-    //     $user->delete();
-
-    //     $request->session()->invalidate();
-    //     $request->session()->regenerateToken();
-
-    //     return Redirect::to('/');
-    // }
 }
