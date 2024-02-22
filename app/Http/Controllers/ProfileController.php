@@ -18,9 +18,10 @@ class ProfileController extends Controller
     public function index(): View
     {
         $user = Auth::user();
+        $userProfile = $user->profile()->first();
         $professions = Profession::orderBy('name')->get();
         $education_level = EducationLevel::orderBy('name')->get();
-        return view('profile.index', compact('user','professions','education_level'));
+        return view('profile.index', compact('user','professions','education_level','userProfile'));
     }
 
     public function update(ProfileUpdateRequest $request , $id)
@@ -40,7 +41,7 @@ class ProfileController extends Controller
             if ($user->getFirstMediaUrl('avatars')) {
                 $user->clearMediaCollection('avatars');
             }
-            $media = $user->addMedia($request->file('avatar'))->toMediaCollection('avatars');
+            $media = $user->addMedia($request->file('avatar'))->toMediaCollection('avatars','avatars');
         }
 
         $user->update();
@@ -56,10 +57,10 @@ class ProfileController extends Controller
 
         if ($request->hasFile('cv')) {
            
-            if ($user->getFirstMediaUrl('cv')) {
+            if ($user->getFirstMediaUrl('cvs')) {
                 $user->clearMediaCollection('cvs');
             }
-            $media = $user->addMedia($request->file('cv'))->toMediaCollection('cvs');
+            $media = $user->addMedia($request->file('cv'))->toMediaCollection('cvs','cvs');
         }
 
         return redirect()->route('profile.index')->with('success', 'profile updated successfully');

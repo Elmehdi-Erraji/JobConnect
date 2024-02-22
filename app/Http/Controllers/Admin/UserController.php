@@ -33,7 +33,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = User::create($request->all());
-        $user->addMediaFromRequest('avatar')->usingName($user->name)->toMediaCollection('avatars');
+        $user->addMediaFromRequest('avatar')->usingName($user->name)->toMediaCollection('avatars','avatars');
         $user->roles()->attach($request->role);
         return redirect()->route('users.index')->with('success', 'user created successfully');
     }

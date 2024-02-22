@@ -15,7 +15,7 @@ class SkillController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-{
+    {
     $skills = Skill::all();
 
         return view('admin.skills.index', compact('skills'));

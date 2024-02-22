@@ -3,7 +3,6 @@
 @section('content')
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <div class="container-fluid">
         <!-- start page title -->
         <div class="row">
@@ -82,12 +81,12 @@
                                     <div class="profile-desk">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <h2 class="text-uppercase fs-24 text-dark">{{ Auth::user()->name }} {{ Auth::user()->last_name }}</h2>
-                                                <div class="designation mb-4">{{ Auth::user()->profession }}</div>
+                                                <h2 class="text-uppercase fs-24 text-dark">{{ $user->name }} {{ $user->last_name }}</h2>
+                                                <div class="designation mb-4">{{ $user->profession }}</div>
                                                 <div class="mt-4">
                                                     <h4 class="fs-20 text-dark">Contact Information</h4>
-                                                    <p class="text-muted fs-16"><strong>Email:</strong> <a href="mailto:{{ Auth::user()->email }}">{{ Auth::user()->email }}</a></p>
-                                                    <p class="text-muted fs-16"><strong>Phone:</strong> {{ Auth::user()->phone }}</p>
+                                                    <p class="text-muted fs-16"><strong>Email:</strong> <a href="mailto:{{ $user->email }}">{{ $user->email }}</a></p>
+                                                    <p class="text-muted fs-16"><strong>Phone:</strong> {{ $user->phone }}</p>
                                                 </div>
                                                 <div class="mt-4">
                                                     <h4 class="fs-20 text-dark">About Me</h4>
@@ -95,7 +94,11 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6 text-end">
-                                                <a href="" class="btn btn-primary">Download CV</a>
+                                                @if ( $user->getFirstMedia('cvs'))
+                                                <a href="{{ $user->getFirstMedia('cvs')->getUrl() }}" class="btn btn-primary" download>Download CV</a>
+                                                 @else
+                                                 <h4>No Resume Yet</h4>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -154,26 +157,26 @@
                                 <div id="edit-profile" class="tab-pane">
                                     <div id="edit-profile" class="tab-pane">
                                         <div class="user-profile-content">
-                                            <form action="{{ route('profile.update',Auth::user()->id) }}" method="POST" id="profileForm" enctype="multipart/form-data">
+                                            <form action="{{ route('profile.update',$user->id) }}" method="POST" id="profileForm" enctype="multipart/form-data">
                                                 @csrf
                                                 @method('PUT')
-                                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}" >
+                                                <input type="hidden" name="user_id" value="{{$user->id}}" >
                                                 <div class="row row-cols-sm-2 row-cols-1">
                                                     <div class="mb-2">
                                                         <label class="form-label" for="username">First Name </label>
-                                                        <input type="text" value="{{ Auth::user()->name }}" id="username" name="name" class="form-control">
+                                                        <input type="text" value="{{ $user->name }}" id="username" name="name" class="form-control">
                                                     </div>
                                                     <div class="mb-2">
                                                         <label class="form-label" for="last_name">Last Name</label>
-                                                        <input type="text" value="{{ Auth::user()->last_name }}" id="last_name" name="last_name" class="form-control">
+                                                        <input type="text" value="{{ $user->last_name }}" id="last_name" name="last_name" class="form-control">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label class="form-label" for="email">Email</label>
-                                                        <input type="email" value="{{ Auth::user()->email }}" id="email" name="email" class="form-control">
+                                                        <input type="email" value="{{ $user->email }}" id="email" name="email" class="form-control">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label class="form-label" for="phone">Phone</label>
-                                                        <input type="tel" value="{{ Auth::user()->phone }}" id="phone" name="phone" class="form-control">
+                                                        <input type="tel" value="{{ $user->phone }}" id="phone" name="phone" class="form-control">
                                                     </div>
 
                                                     <div class="mb-3">
@@ -181,8 +184,11 @@
                                                     <select id="profession" name="profession" class="form-select">
                                                         <option value="">Select Profession</option>
                                                         @foreach($professions as $profession)
-                                                            <option value="{{ $profession->id }}">{{ $profession->name }}</option>
-                                                        @endforeach
+                                                        <option value="{{ $profession->id }}" {{ optional($userProfile)->profession_id == $profession->id ? 'selected' : ' ' }}>
+                                                            {{ $profession->name }}
+                                                       
+                                                        </option> 
+                                                        @endforeach                                                      
                                                     </select>
                                                     </div> 
 
@@ -191,22 +197,26 @@
                                                         <select class="form-control" id="education_level" name="education_level">
                                                             <option value="">Select Education Level</option>
                                                             @foreach($education_level as $level)
-                                                                <option value="{{ $level->id }}">{{ $level->name }}</option>
+                                                            <option value="{{ $level->id }}" {{ optional($userProfile)->education_level_id == $level->id ? 'selected' : '' }}>
+                                                                {{ $level->name }}
+                                                            </option>
                                                             @endforeach
                                                         </select>
                                                     </div>
 
                                                 
+                                                   
                                                     <div class="mb-3">
                                                         <label class="form-label" for="motivation">Motivation</label>
-                                                        <textarea id="motivation" name="motivation" class="form-control">{{ Auth::user()->motivation }}</textarea>
-                                                    </div> 
+                                                        <textarea id="motivation" name="motivation" class="form-control">{{ optional($userProfile)->motivation}}</textarea>
+                                                    </div>
+                                                
 
                                                      <div class="col-sm-12 mb-3">
                                                         <label class="form-label" for="cv">CV</label>
                                                         <input type="file" id="cv" name="cv" class="form-control">
-                                                        @if(Auth::user()->cv)
-                                                        <a href="{{ asset('media path to cv' . Auth::user()->cv) }}" download>Download CV</a>
+                                                        @if ($userProfile && $userProfile->getFirstMedia('cvs'))
+                                                        <a href="{{ $userProfile->getFirstMedia('cvs')->getUrl() }}" download>Download CV</a>
                                                         @endif
                                                     </div>
 
