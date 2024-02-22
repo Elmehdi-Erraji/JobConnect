@@ -68,8 +68,8 @@ class UserController extends Controller
         $user->status = $request->status;
     
         // Check if the user is banned and reason field is provided
-        if ($request->status == 2 && $request->filled('ban_reason')) {
-            $user->ban_reason = $request->ban_reason;
+        if ($request->status == 3 && $request->filled('ban_reason')) {
+            $user->ban_reason = $request->input('ban_reason');
         }
     
         $user->save();

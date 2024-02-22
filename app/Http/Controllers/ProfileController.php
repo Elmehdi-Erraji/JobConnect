@@ -27,7 +27,6 @@ class ProfileController extends Controller
     public function update(ProfileUpdateRequest $request , $id)
     {
 
-     
         //update the user information 
 
         $user = User::findOrFail($id);
