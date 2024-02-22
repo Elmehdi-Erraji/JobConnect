@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Guest\GuestController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,9 +36,7 @@ Route::resource('skills', \App\Http\Controllers\Admin\SkillController::class);
 
 require __DIR__.'/auth.php';
 
-
-
-
+// Route::get('/home', [GuestController::class, 'index']);
 
 
 
