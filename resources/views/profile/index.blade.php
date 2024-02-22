@@ -157,6 +157,7 @@
                                             <form action="{{ route('profile.update',Auth::user()->id) }}" method="POST" id="profileForm" enctype="multipart/form-data">
                                                 @csrf
                                                 @method('PUT')
+                                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}" >
                                                 <div class="row row-cols-sm-2 row-cols-1">
                                                     <div class="mb-2">
                                                         <label class="form-label" for="username">First Name </label>
@@ -183,7 +184,7 @@
                                                             <option value="{{ $profession->id }}">{{ $profession->name }}</option>
                                                         @endforeach
                                                     </select>
-                                                </div>
+                                                    </div> 
 
                                                     <div class="mb-3">
                                                         <label class="form-label" for="education_level">Education Level</label>
@@ -196,13 +197,12 @@
                                                     </div>
 
                                                 
-
                                                     <div class="mb-3">
                                                         <label class="form-label" for="motivation">Motivation</label>
                                                         <textarea id="motivation" name="motivation" class="form-control">{{ Auth::user()->motivation }}</textarea>
-                                                    </div>
+                                                    </div> 
 
-                                                    <div class="col-sm-12 mb-3">
+                                                     <div class="col-sm-12 mb-3">
                                                         <label class="form-label" for="cv">CV</label>
                                                         <input type="file" id="cv" name="cv" class="form-control">
                                                         @if(Auth::user()->cv)
