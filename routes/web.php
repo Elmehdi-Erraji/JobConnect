@@ -17,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('admin.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -66,6 +66,7 @@ require __DIR__.'/auth.php';
 
 
 
+
 Route::get('dashboard', function () {
     return view('admin.index');
 })->name('admin.index');
@@ -73,8 +74,6 @@ Route::get('dashboard', function () {
 Route::get('test', function () {
     return view('test');
 })->name('test');
-
-
 
 
 

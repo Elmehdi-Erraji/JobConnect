@@ -26,14 +26,14 @@
             <li class="side-nav-title">Main</li>
 
             <li class="side-nav-item">
-                <a href="" class="side-nav-link">
+                <a href="{{route('home')}}" class="side-nav-link">
                     <i class="ri-home-3-line"></i>
                     <span> Back Home </span>
                 </a>
             </li>
 
             <li class="side-nav-item">
-                <a href="" class="side-nav-link">
+                <a href="{{route('dashboard')}}" class="side-nav-link">
                     <i class="ri-dashboard-3-line"></i>
                     <span> Dashboard </span>
                 </a>

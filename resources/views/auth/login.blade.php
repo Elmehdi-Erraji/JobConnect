@@ -24,7 +24,7 @@
                 <div class="card overflow-hidden">
                     <div class="row g-0">
                         <div class="col-lg-6 d-none d-lg-block p-2">
-                            <img src="{{ asset('assets/images/test.jpg') }}" alt="" class="img-fluid rounded h-100">
+                            <img src="{{ asset('assets/images/9.jpg') }}" alt="" class="img-fluid rounded h-100">
                         </div>
                         <div class="col-lg-6">
                             <div class="d-flex flex-column h-100">
@@ -78,7 +78,7 @@
         <div class="row">
             <div class="col-12 text-center">
                 <p class="text-dark-emphasis">Don't have an account? <a href="{{ route('register') }}" class="text-dark fw-bold ms-1 link-offset-3 text-decoration-underline"><b>Sign up</b></a></p>
-{{--                <p class="text-dark-emphasis"> Go back  <a href="{{ route('home') }}" class="text-dark fw-bold ms-1 link-offset-3 text-decoration-underline"><b>Home</b></a></p>--}}
+               <p class="text-dark-emphasis"> Go back  <a href="{{ route('home') }}" class="text-dark fw-bold ms-1 link-offset-3 text-decoration-underline"><b>Home</b></a></p>
             </div> <!-- end col -->
         </div>
         <!-- end row -->
