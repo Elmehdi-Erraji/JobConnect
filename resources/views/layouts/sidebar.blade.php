@@ -22,6 +22,7 @@
     <!-- Sidebar -left -->
     <div class="h-100" id="leftside-menu-container" >
 
+        @if(auth()->user()->roles()->first()->name == 'admin')
         <ul class="side-nav">
             <li class="side-nav-title">Main</li>
 
@@ -75,12 +76,12 @@
             </li>
 
             <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarManagers" aria-expanded="false" aria-controls="sidebarManagers" class="side-nav-link">
-                    <i class="ri-admin-line"></i>
+                <a data-bs-toggle="collapse" href="#sidebarEntreprise" aria-expanded="false" aria-controls="sidebarEntreprise" class="side-nav-link">
+                    <i class="ri-building-line"></i>
                     <span> Entreprise </span>
                     <span class="menu-arrow"></span>
                 </a>
-                <div class="collapse" id="sidebarManagers">
+                <div class="collapse" id="sidebarEntreprise">
                     <ul class="side-nav-third-level">
                         <li>
                             <a href="{{route('entreprise.create')}}">Add An Entreprise</a>
@@ -198,11 +199,221 @@
                 </div>
             </li>
            
+        </ul>
+        @endif
 
+        @if(auth()->user()->roles()->first()->name == 'responsable')
+        <ul class="side-nav">
+            <li class="side-nav-title">Main</li>
+
+            <li class="side-nav-item">
+                <a href="{{route('home')}}" class="side-nav-link">
+                    <i class="ri-home-3-line"></i>
+                    <span> Back Home </span>
+                </a>
+            </li>
+
+            <li class="side-nav-item">
+                <a href="{{route('dashboard')}}" class="side-nav-link">
+                    <i class="ri-dashboard-3-line"></i>
+                    <span> Dashboard </span>
+                </a>
+            </li>
+
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarUsers" aria-expanded="false" aria-controls="sidebarUsers" class="side-nav-link">
+                    <i class="ri-group-2-line"></i>
+                    <span> Users </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarUsers">
+                    <ul class="side-nav-third-level">
+                        <li>
+                            <a href="{{route('users.create')}}">Add A User</a>
+                        </li>
+                        <li>
+                            <a href="{{route('users.index')}}">Users List</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarManagers" aria-expanded="false" aria-controls="sidebarManagers" class="side-nav-link">
+                    <i class="ri-admin-line"></i>
+                    <span> Managers </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarManagers">
+                    <ul class="side-nav-third-level">
+                        <li>
+                            <a href="{{route('users.create')}}">Add A Manager</a>
+                        </li>
+                        <li>
+                            <a href="{{route('users.index')}}">Managers List</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarEntreprise" aria-expanded="false" aria-controls="sidebarEntreprise" class="side-nav-link">
+                    <i class="ri-building-line"></i>
+                    <span> Entreprise </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarEntreprise">
+                    <ul class="side-nav-third-level">
+                        <li>
+                            <a href="{{route('entreprise.create')}}">Add An Entreprise</a>
+                        </li>
+                        <li>
+                            <a href="{{route('entreprise.index')}}">Entreprise List</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+         
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarOffers" aria-expanded="false" aria-controls="sidebarOffers" class="side-nav-link">
+                    <i class="ri-folder-line"></i>
+                    <span> Offers </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarOffers">
+                    <ul class="side-nav-third-level">
+                        <li>
+                            <a href="#">Add An Offers</a>
+                        </li>
+                        <li>
+                            <a href="#">Offers List</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarServices" aria-expanded="false" aria-controls="sidebarServices" class="side-nav-link">
+                    <i class="ri-flag-2-line"></i>
+                    <span> Requests </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarServices">
+                    <ul class="side-nav-third-level">
+                        <li>
+                            <a href="#">Requests List</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
 
         </ul>
+        @endif
 
 
+        @if(auth()->user()->roles()->first()->name == 'recruiter')
+        <ul class="side-nav">
+            <li class="side-nav-title">Main</li>
+
+            <li class="side-nav-item">
+                <a href="{{route('home')}}" class="side-nav-link">
+                    <i class="ri-home-3-line"></i>
+                    <span> Back Home </span>
+                </a>
+            </li>
+
+            <li class="side-nav-item">
+                <a href="{{route('dashboard')}}" class="side-nav-link">
+                    <i class="ri-dashboard-3-line"></i>
+                    <span> Dashboard </span>
+                </a>
+            </li>
+
+            
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarManagers" aria-expanded="false" aria-controls="sidebarManagers" class="side-nav-link">
+                    <i class="ri-admin-line"></i>
+                    <span> Managers </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarManagers">
+                    <ul class="side-nav-third-level">
+                        <li>
+                            <a href="{{route('users.create')}}">Add A Recruter</a>
+                        </li>
+                        <li>
+                            <a href="{{route('users.index')}}">Recruters List</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarOffers" aria-expanded="false" aria-controls="sidebarOffers" class="side-nav-link">
+                    <i class="ri-folder-line"></i>
+                    <span> Offers </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarOffers">
+                    <ul class="side-nav-third-level">
+                        <li>
+                            <a href="#">Add An Offers</a>
+                        </li>
+                        <li>
+                            <a href="#">Offers List</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarServices" aria-expanded="false" aria-controls="sidebarServices" class="side-nav-link">
+                    <i class="ri-flag-2-line"></i>
+                    <span> Requests </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarServices">
+                    <ul class="side-nav-third-level">
+                        <li>
+                            <a href="#">Requests List</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+        </ul>
+        @endif
+
+
+
+        @if(auth()->user()->roles()->first()->name == 'candidate')
+        <ul class="side-nav">
+            <li class="side-nav-title">Main</li>
+
+            <li class="side-nav-item">
+                <a href="{{route('home')}}" class="side-nav-link">
+                    <i class="ri-home-3-line"></i>
+                    <span> Back Home </span>
+                </a>
+            </li>
+          
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarServices" aria-expanded="false" aria-controls="sidebarServices" class="side-nav-link">
+                    <i class="ri-flag-2-line"></i>
+                    <span> Requests </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarServices">
+                    <ul class="side-nav-third-level">
+                        <li>
+                            <a href="#">Requests List</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+        </ul>
+        @endif
 
     </div>
 
