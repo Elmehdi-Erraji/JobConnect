@@ -44,9 +44,24 @@
 						<li><a href="about-us.html">About Us</a></li>
 						<li><a href="blog-home.html">Blog</a></li>
 						<li><a href="contact.html">Contact</a></li>
-						
+						@guest
 						<li><a class="ticker-btn" href="{{route('register')}}">Signup</a></li>
 						<li><a class="ticker-btn" href="{{route('login')}}">Login</a></li>
+						@else
+						
+						<li><a class="ticker-btn bg-warning" href="{{route('profile.index')}}">My Account</a></li>
+						<li>
+								<form method="POST" action="{{ route('logout') }}">
+									@csrf
+									<a href="#" class="dropdown-item bg-warning"
+									   onclick="event.preventDefault();
+										this.closest('form').submit();">
+										<i class="ri-logout-box-line fs-18 align-middle me-1"></i>
+										<span>Logout</span>
+									</a>
+								</form>
+						</li>
+						@endguest
 					</ul>
 				</nav><!-- #nav-menu-container -->
 			</div>
@@ -404,6 +419,7 @@
 	</footer>
 	<!-- End footer Area -->
 
+	
 	<script src="{{ asset('assets/js/js/vendor/jquery-2.2.4.min.js') }}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
 		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"

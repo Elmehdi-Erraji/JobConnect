@@ -20,7 +20,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('admin.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -65,29 +65,8 @@ require __DIR__.'/auth.php';
 
 
 
-Route::get('test', function () {
-    return view('test');
-})->name('test');
 
 
-
-
-
-
-
-Route::get('/entreprise', function () {
-    return view('admin.entreprise.index');
-})->name('admin.entreprise.index');
-
-
-Route::get('/entreprise/create', function () {
-    return view('admin.entreprise.create');
-})->name('admin.entreprise.create');
-
-
-Route::get('/entreprise/edit', function () {
-    return view('admin.entreprise.edit');
-})->name('admin.entreprise.edit');
 
 
 
