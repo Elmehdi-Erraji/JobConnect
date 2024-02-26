@@ -17,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('admin.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -65,42 +65,8 @@ require __DIR__.'/auth.php';
 
 
 
-Route::get('dashboard', function () {
-    return view('admin.index');
-})->name('admin.index');
 
 
-
-
-Route::get('/users', function () {
-    return view('admin.users.index');
-})->name('admin.users.index');
-
-
-Route::get('/users/create', function () {
-    return view('admin.users.create');
-})->name('admin.users.create');
-
-
-Route::get('/users/edit', function () {
-    return view('admin.users.edit');
-})->name('admin.users.edit');
-
-
-
-Route::get('/entreprise', function () {
-    return view('admin.entreprise.index');
-})->name('admin.entreprise.index');
-
-
-Route::get('/entreprise/create', function () {
-    return view('admin.entreprise.create');
-})->name('admin.entreprise.create');
-
-
-Route::get('/entreprise/edit', function () {
-    return view('admin.entreprise.edit');
-})->name('admin.entreprise.edit');
 
 
 
