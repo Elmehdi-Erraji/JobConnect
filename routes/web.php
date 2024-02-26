@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Guest\GuestController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,7 @@ Route::resource('profile', \App\Http\Controllers\ProfileController::class);
 
 require __DIR__.'/auth.php';
 
+// Route::get('/home', [GuestController::class, 'index']);
 
 
 
@@ -63,10 +65,29 @@ require __DIR__.'/auth.php';
 
 
 
+Route::get('dashboard', function () {
+    return view('admin.index');
+})->name('admin.index');
 
 
 
-//
+
+Route::get('/users', function () {
+    return view('admin.users.index');
+})->name('admin.users.index');
+
+
+Route::get('/users/create', function () {
+    return view('admin.users.create');
+})->name('admin.users.create');
+
+
+Route::get('/users/edit', function () {
+    return view('admin.users.edit');
+})->name('admin.users.edit');
+
+
+
 Route::get('/entreprise', function () {
     return view('admin.entreprise.index');
 })->name('admin.entreprise.index');
