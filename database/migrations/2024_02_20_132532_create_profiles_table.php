@@ -14,8 +14,6 @@ return new class extends Migration
         // Profiles Table
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->text('cv')->nullable();
-            $table->string('image')->nullable();
             $table->text('motivation')->nullable();
             $table->string('city')->nullable();
             $table->unsignedBigInteger('user_id')->unique();
@@ -23,16 +21,16 @@ return new class extends Migration
             $table->foreignId('education_level_id')
                 ->nullable()
                 ->constrained('education_levels')
-                ->onDelete('cascade'); 
+                ->onDelete('cascade');
             $table->foreignId('profession_id')
                 ->nullable()
                 ->constrained('professions')
-                ->onDelete('cascade'); 
-            $table->softDeletes(); 
+                ->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
 
-        
+
         Schema::create('profile_skill', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('profile_id');
@@ -43,7 +41,7 @@ return new class extends Migration
             $table->foreign('skill_id')->references('id')->on('skills')->onDelete('cascade');
         });
 
-        
+
         Schema::create('profile_experience', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('profile_id');
@@ -54,7 +52,7 @@ return new class extends Migration
             $table->foreign('experience_id')->references('id')->on('experiences')->onDelete('cascade');
         });
 
-        
+
         Schema::create('profile_formation', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('profile_id');

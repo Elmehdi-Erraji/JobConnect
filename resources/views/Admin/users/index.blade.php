@@ -1,6 +1,3 @@
-
-
-
         @extends('layouts.main')
 
         @section('content')
@@ -35,7 +32,7 @@
                                 <div class="p-3">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <a href="{{route('admin.users.create')}}" class="btn btn-primary" id="addButton" style="width: 30%">Add A User</a>
+                                            <a href="{{ route('users.create') }}" class="btn btn-primary" id="addButton" style="width: 30%">Add A User</a>
                                         </div>
 
                                     </div>
@@ -57,7 +54,48 @@
                                             </tr>
                                             </thead>
                                             <tbody id="tableBody">
+                                            @foreach ($users as $user)
+                                                <tr>
+                                                    <td>{{ $user->id }}</td>
+                                                    <td>
+                                                        @if ($user->getFirstMedia('avatars'))
+                                                            <img src="{{ asset($user->getFirstMedia('avatars')->getUrl()) }}" class="rounded-circle" alt="Avatar" width="50">
+                                                        @else
+                                                            No image
+                                                        @endif
+                                                    </td>
+                                                    <td>{{ $user->name }}</td>
+                                                    <td>{{ $user->email }}</td>
+                                                    <td>{{ $user->phone }}</td>
 
+                                                    <td>
+                                                        @if ($user->status === 1)
+                                                            <span class="badge bg-info-subtle text-info">Pending</span>
+                                                        @elseif ($user->status === 2)
+                                                            <span class="badge bg-warning-subtle text-warning">Active</span>
+                                                        @elseif ($user->status === 3)
+                                                            <span class="badge bg-pink-subtle text-pink ">Banned</span>
+                                                        @else
+                                                            <span class="badge bg-warning">Unknown Status</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($user->roles()->exists())
+                                                            {{ $user->roles()->first()->name }}
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                                        <a href="{{ route('users.show', $user->id) }}" class="btn btn-sm btn-success">View Details</a>
+
+                                                        <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-sm btn-danger  delete-btn">Delete</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                             </tbody>
                                         </table>
                                         @if (Session::has('success'))

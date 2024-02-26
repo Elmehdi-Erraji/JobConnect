@@ -20,8 +20,8 @@
     </a>
 
     <!-- Sidebar -left -->
-    <div class="h-100" id="leftside-menu-container" data-simplebar>
-        <!-- Sidemenu -->
+    <div class="h-100" id="leftside-menu-container" >
+
         <ul class="side-nav">
             <li class="side-nav-title">Main</li>
 
@@ -33,7 +33,7 @@
             </li>
 
             <li class="side-nav-item">
-                <a href="{{route('admin.index')}}" class="side-nav-link">
+                <a href="" class="side-nav-link">
                     <i class="ri-dashboard-3-line"></i>
                     <span> Dashboard </span>
                 </a>
@@ -48,33 +48,14 @@
                 <div class="collapse" id="sidebarUsers">
                     <ul class="side-nav-third-level">
                         <li>
-                            <a href="{{route('admin.users.create')}}">Add A User</a>
+                            <a href="{{route('users.create')}}">Add A User</a>
                         </li>
                         <li>
-                            <a href="{{route('admin.users.index')}}">Users List</a>
+                            <a href="{{route('users.index')}}">Users List</a>
                         </li>
                     </ul>
                 </div>
             </li>
-
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarPartners" aria-expanded="false" aria-controls="sidebarUsers" class="side-nav-link">
-                    <i class="ri-building-2-line"></i>
-                    <span> Entreprises </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="sidebarPartners">
-                    <ul class="side-nav-third-level">
-                        <li>
-                            <a href="">Add An Entreprise </a>
-                        </li>
-                        <li>
-                            <a href="">Entreprises List</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarManagers" aria-expanded="false" aria-controls="sidebarManagers" class="side-nav-link">
                     <i class="ri-admin-line"></i>
@@ -84,28 +65,29 @@
                 <div class="collapse" id="sidebarManagers">
                     <ul class="side-nav-third-level">
                         <li>
-                            <a href="{{route('admin.users.create')}}">Add A Manager</a>
+                            <a href="{{route('users.create')}}">Add A Manager</a>
                         </li>
                         <li>
-                            <a href="{{route('admin.users.index')}}">Managers List</a>
+                            <a href="{{route('users.index')}}">Managers List</a>
                         </li>
                     </ul>
                 </div>
             </li>
 
+         
             <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarFAQ" aria-expanded="false" aria-controls="sidebarFAQ" class="side-nav-link">
+                <a data-bs-toggle="collapse" href="#sidebarOffers" aria-expanded="false" aria-controls="sidebarOffers" class="side-nav-link">
                     <i class="ri-folder-line"></i>
                     <span> Offers </span>
                     <span class="menu-arrow"></span>
                 </a>
-                <div class="collapse" id="sidebarFAQ">
+                <div class="collapse" id="sidebarOffers">
                     <ul class="side-nav-third-level">
                         <li>
-                            <a href="">Add An Offers</a>
+                            <a href="#">Add An Offers</a>
                         </li>
                         <li>
-                            <a href="">Offers List</a>
+                            <a href="#">Offers List</a>
                         </li>
                     </ul>
                 </div>
@@ -120,7 +102,7 @@
                 <div class="collapse" id="sidebarServices">
                     <ul class="side-nav-third-level">
                         <li>
-                            <a href="">Requests List</a>
+                            <a href="#">Requests List</a>
                         </li>
                     </ul>
                 </div>
@@ -139,7 +121,9 @@
                 <div class="collapse" id="sidebarCategory">
                     <ul class="side-nav-third-level">
                         <li>
-                            <a href="">Categories list</a>
+
+                            <a href="{{route('category.index')}}">Categories list</a>
+
                         </li>
 
                     </ul>
@@ -172,7 +156,9 @@
                     <ul class="side-nav-third-level">
 
                         <li>
-                            <a href="">Contract List</a>
+
+                            <a href="{{route('contracts.index')}}">Contract List</a>
+
                         </li>
 
                     </ul>
@@ -193,6 +179,8 @@
                     </ul>
                 </div>
             </li>
+           
+
 
         </ul>
 
