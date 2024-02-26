@@ -60,15 +60,21 @@ require __DIR__.'/auth.php';
 
 
 
-
-
-
-
-
 Route::get('/dashboard', function () {
     return view('admin.index');
 })->name('admin.index');
 
+
+
+
+
+Route::get('test', function () {
+    return view('test');
+})->name('test');
+
+Route::get('alljobs', function () {
+    return view('guest.index');
+})->name('alljobs');
 
 
 
