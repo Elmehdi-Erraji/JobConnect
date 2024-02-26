@@ -3446,7 +3446,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 14px;
 }
 
-.about-content .lnr {
+.about-content .fas {
   margin: 0px 10px;
   font-weight: 600;
 }
@@ -3525,7 +3525,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   cursor: pointer;
 }
 
-.single-service:hover h4, .single-service:hover p, .single-service:hover .lnr {
+.single-service:hover h4, .single-service:hover p, .single-service:hover .fas {
   color: #fff;
 }
 
@@ -3545,7 +3545,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-bottom: 20px;
 }
 
-.single-service h4 .lnr {
+.single-service h4 .fas {
   margin-right: 15px;
 }
 
@@ -3624,11 +3624,11 @@ body.mobile-nav-active #mobile-nav-toggle {
   padding: 250px 0px;
 }
 
-.search-page-top a, .search-page-top .lnr {
+.search-page-top a, .search-page-top .fas {
   color: #fff;
 }
 
-.search-page-top .lnr {
+.search-page-top .fas {
   font-weight: 700;
   margin: 0px 10px;
 }

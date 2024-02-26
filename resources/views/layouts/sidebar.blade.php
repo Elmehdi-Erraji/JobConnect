@@ -74,6 +74,24 @@
                 </div>
             </li>
 
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarManagers" aria-expanded="false" aria-controls="sidebarManagers" class="side-nav-link">
+                    <i class="ri-admin-line"></i>
+                    <span> Entreprise </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarManagers">
+                    <ul class="side-nav-third-level">
+                        <li>
+                            <a href="{{route('entreprise.create')}}">Add An Entreprise</a>
+                        </li>
+                        <li>
+                            <a href="{{route('entreprise.index')}}">Entreprise List</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
          
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarOffers" aria-expanded="false" aria-controls="sidebarOffers" class="side-nav-link">

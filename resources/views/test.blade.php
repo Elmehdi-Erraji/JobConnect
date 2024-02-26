@@ -93,7 +93,7 @@
 							</div>
 							<div class="col-lg-2 form-cols">
 								<button type="button" class="btn btn-info">
-									<span class="lnr lnr-magnifier"></span> Search
+									<span><i class="fas fa-magnifying-glass"></i></span> Search 
 								</button>
 							</div>
 						</div>
@@ -260,8 +260,8 @@
 								ididunt ut dolore magna aliqua.
 							</p>
 							<h5>Job Nature: Full time</h5>
-							<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-							<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
+							<p class="address"><span class="fas fa-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
+							<p class="address"><span class="fas fa-database"></span> 15k - 25k</p>
 						</div>
 					</div>
 
@@ -372,7 +372,7 @@
 
 									<div class="col-lg-4 col-md-12">
 										<button class="nw-btn primary-btn">Subscribe<span
-												class="lnr lnr-arrow-right"></span></button>
+												class="fa fas-arrow-right"></span></button>
 									</div>
 								</div>
 								<div class="info"></div>
