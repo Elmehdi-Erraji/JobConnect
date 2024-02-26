@@ -7,7 +7,7 @@
         <!-- start page title -->
         <div class="row">
             <div class="col-sm-12">
-                <div class="profile-bg-picture" style="background-image: url('{{ asset('assets/images/bg-profile.jpg') }}')">
+                <div class="profile-bg-picture" style="background-image:url('assets/images/bg-profile.jpg')">
                     <span class="picture-bg-overlay"></span>
                     <!-- overlay -->
                 </div>
@@ -24,9 +24,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="d-flex justify-content-end align-items-center gap-2">
-                               <br>
-                               
-
+                                
                             </div>
                         </div>
                     </div>
