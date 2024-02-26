@@ -37,13 +37,21 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-6">
-                                <form action="" method="POST" id="addUserForm" enctype="multipart/form-data">
+                                <form action="{{route('users.store')}}" method="POST" id="addUserForm" enctype="multipart/form-data">
                                     @csrf
 
                                     <div class="mb-3">
-                                        <label for="name" class="form-label">Name</label>
-                                        <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Artist Name">
+                                        <label for="name" class="form-label">First Name</label>
+                                        <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="User first Name">
                                         @error('name')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <input type="hidden" name="status" value="1">
+                                    <div class="mb-3">
+                                        <label for="last_name" class="form-label">Last Name</label>
+                                        <input type="text" id="last_name" class="form-control @error('last_name') is-invalid @enderror" name="last_name" placeholder="User last Name">
+                                        @error('last_name')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>

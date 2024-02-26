@@ -1,6 +1,3 @@
-
-
-
         @extends('layouts.main')
 
         @section('content')
@@ -61,9 +58,11 @@
                                                 <tr>
                                                     <td>{{ $user->id }}</td>
                                                     <td>
-
+                                                        @if ($user->getFirstMedia('avatars'))
+                                                            <img src="{{ asset($user->getFirstMedia('avatars')->getUrl()) }}" class="rounded-circle" alt="Avatar" width="50">
+                                                        @else
                                                             No image
-
+                                                        @endif
                                                     </td>
                                                     <td>{{ $user->name }}</td>
                                                     <td>{{ $user->email }}</td>

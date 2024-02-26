@@ -20,8 +20,8 @@
     </a>
 
     <!-- Sidebar -left -->
-    <div class="h-100" id="leftside-menu-container" data-simplebar>
-        <!-- Sidemenu -->
+    <div class="h-100" id="leftside-menu-container" >
+
         <ul class="side-nav">
             <li class="side-nav-title">Main</li>
 
@@ -56,25 +56,6 @@
                     </ul>
                 </div>
             </li>
-
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarPartners" aria-expanded="false" aria-controls="sidebarUsers" class="side-nav-link">
-                    <i class="ri-building-2-line"></i>
-                    <span> Entreprises </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="sidebarPartners">
-                    <ul class="side-nav-third-level">
-                        <li>
-                            <a href="">Add An Entreprise </a>
-                        </li>
-                        <li>
-                            <a href="">Entreprises List</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarManagers" aria-expanded="false" aria-controls="sidebarManagers" class="side-nav-link">
                     <i class="ri-admin-line"></i>
@@ -93,19 +74,20 @@
                 </div>
             </li>
 
+         
             <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarFAQ" aria-expanded="false" aria-controls="sidebarFAQ" class="side-nav-link">
+                <a data-bs-toggle="collapse" href="#sidebarOffers" aria-expanded="false" aria-controls="sidebarOffers" class="side-nav-link">
                     <i class="ri-folder-line"></i>
                     <span> Offers </span>
                     <span class="menu-arrow"></span>
                 </a>
-                <div class="collapse" id="sidebarFAQ">
+                <div class="collapse" id="sidebarOffers">
                     <ul class="side-nav-third-level">
                         <li>
-                            <a href="">Add An Offers</a>
+                            <a href="#">Add An Offers</a>
                         </li>
                         <li>
-                            <a href="">Offers List</a>
+                            <a href="#">Offers List</a>
                         </li>
                     </ul>
                 </div>
@@ -120,7 +102,7 @@
                 <div class="collapse" id="sidebarServices">
                     <ul class="side-nav-third-level">
                         <li>
-                            <a href="">Requests List</a>
+                            <a href="#">Requests List</a>
                         </li>
                     </ul>
                 </div>
@@ -197,6 +179,8 @@
                     </ul>
                 </div>
             </li>
+           
+
 
         </ul>
 
