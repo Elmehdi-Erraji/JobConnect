@@ -89,7 +89,7 @@
                                                 </div>
                                                 <div class="mt-4">
                                                     <h4 class="fs-20 text-dark">About Me</h4>
-                                                    <p class="text-muted fs-16">{{$userProfile->motivation}}</p>
+                                                    <p class="text-muted fs-16">{{ $userProfile?->motivation ?? 'Motivation not added yet.' }}</p>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 text-end">
@@ -160,7 +160,7 @@
                                                    
                                                     <div class="mb-3">
                                                         <label class="form-label" for="motivation">Motivation</label>
-                                                        <textarea id="motivation" name="motivation" class="form-control">{{ optional($userProfile)->motivation}}</textarea>
+                                                        <textarea id="motivation" name="motivation" class="form-control"></textarea>
                                                     </div>
                                                 
 
