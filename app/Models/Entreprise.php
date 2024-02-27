@@ -34,4 +34,17 @@ public function Recrut()
     {
         return $this->hasMany(Offer::class);
     }
+
+    public function entrepriseRepre()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function Recrute()
+    {
+        return $this->belongsToMany(User::class, 'entreprise_user', 'entreprise_id', 'user_id')
+            ->whereHas('roles', function ($query) {
+                $query->where('id', 3);
+            });
+        }
 }

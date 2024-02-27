@@ -70,4 +70,9 @@ class User extends Authenticatable implements HasMedia
         return $this->belongsToMany(Entreprise::class, 'entreprise_user', 'user_id', 'entreprise_id')
             ->withPivot('role_id');
     }
+
+    public function offers()
+{
+    return $this->belongsToMany(Offer::class)->withPivot('request_status');
+}
 }

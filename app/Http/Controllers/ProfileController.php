@@ -21,7 +21,12 @@ class ProfileController extends Controller
         $userProfile = $user->profile()->first();
         $professions = Profession::orderBy('name')->get();
         $education_level = EducationLevel::orderBy('name')->get();
-        return view('profile.index', compact('user','professions','education_level','userProfile'));
+
+        $user = User::with('offers')->findOrFail(auth()->user()->id);
+        $applications = $user->offers;
+
+
+        return view('profile.index', compact('user','professions','education_level','userProfile','applications'));
     }
 
     public function update(ProfileUpdateRequest $request , $id)

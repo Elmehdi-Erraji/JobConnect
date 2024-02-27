@@ -72,6 +72,7 @@
                             <ul class="nav nav-underline nav-justified gap-0">
                                 <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" data-bs-target="#aboutme" type="button" role="tab" aria-controls="home" aria-selected="true" href="#aboutme">Profile</a></li>
                                 <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" data-bs-target="#edit-profile" type="button" role="tab" aria-controls="home" aria-selected="true" href="#edit-profile">Personal Info</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" data-bs-target="#my_requests" type="button" role="tab" aria-controls="home" aria-selected="true" href="#my_requests">My Requests</a></li>
                             </ul>
 
                             <div class="tab-content m-0 p-4">
@@ -183,6 +184,39 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div id="my_requests" class="tab-pane">
+                                    <div class="row m-t-10">
+                                        <div class="col-md-12">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered mb-0">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Offer</th>
+                                                        <th>Description</th>
+                                                        <th>Contract</th>
+                                                        <th>Local</th>
+                                                       
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach($applications as $application)
+                                                        <tr>
+                                                            <td>#</td>
+                                                            <td>{{ $application->title }}</td>
+                                                            <td>{{ $application->description }}</td>
+                                                            <td>{{ $application->contract->name }}</td>
+                                                            <td>{{ $application->local }}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
