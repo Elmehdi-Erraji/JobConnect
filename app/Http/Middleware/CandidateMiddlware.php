@@ -23,12 +23,12 @@ class CandidateMiddlware
             }
             if ($user->status == 3) {
                 auth()->logout();
-                return redirect()->route('login')->with('message', $user->ban_reason);
+                return redirect()->route('login')->with('message', 'You are bnned becausse :' . $user->ban_reason);
             }
             return $next($request);
         }
 
         return redirect()->route('login')->with('message', 'Unauthorized');
     }
-    }
+    
 }
