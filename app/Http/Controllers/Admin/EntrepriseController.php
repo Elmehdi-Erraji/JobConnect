@@ -55,7 +55,7 @@ public function show(Entreprise $entreprise)
         $role = Role::where('id', 2)->first();
 
         if (!$role) {
-            abort(404, 'Role not found'); // Handle the case where the role with ID 2 is not found
+            abort(404, 'Role not found'); 
         }
 
         $users = $role->users;
@@ -65,17 +65,26 @@ public function show(Entreprise $entreprise)
     public function update(CreateEntrepriseRequest $request, Entreprise $entreprise)
     {
         $validatedData = $request->validated();
-
+    
         $entreprise->update($validatedData);
-
-       
+    
         if ($validatedData['user_id'] != $entreprise->user_id) {
-            $entreprise->entrepriseRepre()->associate(User::find($validatedData['user_id']));
-            $entreprise->save();
+           
+            $existingEntreprise = Entreprise::where('user_id', $validatedData['user_id'])->first();
+    
+            if (!$existingEntreprise) {
+               
+                $entreprise->entrepriseRepre()->associate(User::find($validatedData['user_id']));
+                $entreprise->save();
+            } else {
+               
+                return redirect()->back()->withErrors(['user_id' => 'The selected user is already associated with another entreprise.']);
+            }
         }
-
+    
         return redirect()->route('entreprise.index')->with('success', 'Entreprise updated successfully.');
     }
+    
 
     public function destroy(Entreprise $entreprise)
     {

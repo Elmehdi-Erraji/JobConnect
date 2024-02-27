@@ -47,13 +47,7 @@
             <li class="dropdown">
                 <a class="nav-link dropdown-toggle arrow-none nav-user" data-bs-toggle="dropdown" href="#" role="button"
                    aria-haspopup="false" aria-expanded="false">
-                   <span class="account-user-avatar">
-                    @if (Auth::user()->getFirstMedia('avatars'))
-                         <img src="{{ Auth::user()->getFirstMedia('avatars')->getUrl() }}" class="rounded-circle" alt="Avatar" width="50">
-                     @else
-                         <i class="ri-account-circle-line fs-18 align-middle me-1"></i>
-                     @endif
-                 </span>
+                   
                     <span class="d-lg-block d-none">
                         <h5 class="my-0 fw-normal"> <i
                                 class="ri-arrow-down-s-line d-none d-sm-inline-block align-middle"></i></h5>
