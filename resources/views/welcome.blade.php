@@ -163,17 +163,7 @@
 								<input type="text" class="form-control" name="search"
 									placeholder="what are you looging for?">
 							</div>
-							<div class="col-lg-3 form-cols">
-								<div class="default-select" id="default-selects"">
-											<select>
-												<option value=" 1">Select area</option>
-									<option value="2">Dhaka</option>
-									<option value="3">Rajshahi</option>
-									<option value="4">Barishal</option>
-									<option value="5">Noakhali</option>
-									</select>
-								</div>
-							</div>
+							
 							<div class="col-lg-3 form-cols">
 								<div class="default-select" id="default-selects2">
 									<select>
