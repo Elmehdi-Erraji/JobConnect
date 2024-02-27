@@ -16,18 +16,18 @@ class Entreprise extends Model implements HasMedia
 
    
 
-    public function entrepriseRepre()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
+    public function users()
+{
+    return $this->belongsToMany(User::class, 'entreprise_user', 'entreprise_id', 'user_id')
+        ->withPivot('role_id');
+}
 
-    public function Recrut()
-    {
-        return $this->belongsToMany(User::class, 'entreprise_user', 'entreprise_id', 'user_id')
-            ->whereHas('roles', function ($query) {
-                $query->where('id', 3);
-            });
-    }
+public function Recrut()
+{
+    return $this->belongsToMany(User::class, 'entreprise_user', 'entreprise_id', 'user_id')
+        ->join('role_user', 'users.id', '=', 'role_user.user_id')
+        ->join('roles', 'role_user.role_id', '=', 'roles.id');
+}
 
     public function offers()
     {
