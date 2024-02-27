@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Guest\GuestController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,9 +18,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
+
+Route::get('/',[IndexController::class , 'index'])->name('home');
 
 // Route::get('/dashboard', function () {return view('admin.index');})->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -98,8 +101,8 @@ require __DIR__.'/auth.php';
 
 
 
-Route::get('myCompanydash', function () {
-    return view('Entreprise.index');
-})->name('myCompanydash');
+Route::get('guest', function () {
+    return view('guest.index');
+})->name('guets');
 
 
