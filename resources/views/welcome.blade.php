@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
+
+
 <head>
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -116,10 +118,10 @@
 						</div>
 					</div>
 					<ul class="nav-menu">
-						<li class="menu-active"><a href="index.html">Home</a></li>
-						<li><a href="about-us.html">About Us</a></li>
-						<li><a href="blog-home.html">Blog</a></li>
-						<li><a href="contact.html">Contact</a></li>
+						<li class="menu-active"><a href="{{route('home')}}">Home</a></li>
+						<li><a href="#">About Us</a></li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">Contact</a></li>
 						
 						@guest
 						<li><a class="ticker-btn" href="{{route('register')}}">Signup</a></li>
@@ -145,7 +147,8 @@
 				<!-- #nav-menu-container -->
 			</div>
 		</div>
-	</header><!-- #header -->
+	</header>
+<!-- #header -->
 
 
 	<!-- start banner Area -->
@@ -163,25 +166,13 @@
 								<input type="text" class="form-control" name="search"
 									placeholder="what are you looging for?">
 							</div>
-							<div class="col-lg-3 form-cols">
-								<div class="default-select" id="default-selects"">
-											<select>
-												<option value=" 1">Select area</option>
-									<option value="2">Dhaka</option>
-									<option value="3">Rajshahi</option>
-									<option value="4">Barishal</option>
-									<option value="5">Noakhali</option>
-									</select>
-								</div>
-							</div>
+							
 							<div class="col-lg-3 form-cols">
 								<div class="default-select" id="default-selects2">
 									<select>
-										<option value="1">All Category</option>
-										<option value="2">Medical</option>
-										<option value="3">Technology</option>
-										<option value="4">Goverment</option>
-										<option value="5">Development</option>
+										@foreach ($categories as $category)
+											<option value="{{ $category->id }}">{{ $category->name }}</option>
+										@endforeach				
 									</select>
 								</div>
 							</div>
@@ -241,83 +232,17 @@
 	</section>
 	<!-- End features Area -->
 
-
-
-	<!-- Start feature-cat Area -->
-	<section class="feature-cat-area pt-100" id="category">
-		<div class="container">
-			<div class="row d-flex justify-content-center">
-				<div class="menu-content pb-60 col-lg-10">
-					<div class="title text-center">
-						<h1 class="mb-10">Featured Job Categories</h1>
-						<p>Who are in extremely love with eco friendly system.</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-2 col-md-4 col-sm-6">
-					<div class="single-fcat">
-						<a href="category.html">
-							<img src="{{ asset('assets/images/img/o1.png') }}" alt="">
-						</a>
-						<p>Accounting</p>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-4 col-sm-6">
-					<div class="single-fcat">
-						<a href="category.html">
-							<img src="{{ asset('assets/images/img/o2.png') }}" alt="">
-						</a>
-						<p>Development</p>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-4 col-sm-6">
-					<div class="single-fcat">
-						<a href="category.html">
-							<img src="{{ asset('assets/images/img/o3.png') }}" alt="">
-						</a>
-						<p>Technology</p>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-4 col-sm-6">
-					<div class="single-fcat">
-						<a href="category.html">
-							<img src="{{ asset('assets/images/img/o4.png') }}" alt="">
-						</a>
-						<p>Media & News</p>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-4 col-sm-6">
-					<div class="single-fcat">
-						<a href="category.html">
-							<img src="{{ asset('assets/images/img/o5.png') }}" alt="">
-						</a>
-						<p>Medical</p>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-4 col-sm-6">
-					<div class="single-fcat">
-						<a href="category.html">
-							<img src="{{ asset('assets/images/img/o6.png') }}" alt="">
-						</a>
-						<p>Goverment</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End feature-cat Area -->
-
+	
 	<!-- Start post Area -->
 	<section class="post-area section-gap">
 		<div class="container">
 			<div class="row justify-content-center d-flex">
 				<div class="col-lg-8 post-list">
 					<ul class="cat-list">
-						<li><a href="#">Recent</a></li>
-						<li><a href="#">Full Time</a></li>
-						<li><a href="#">Intern</a></li>
-						<li><a href="#">part Time</a></li>
+						@foreach ($categories as $category)
+							<li style="width: 30%"><a href="#">{{ $category->name }}</a></li>
+						@endforeach
+						
 					</ul>
 					
 						
@@ -366,24 +291,15 @@
 					<div class="single-slidebar">
 						<h4>Jobs by Contrat</h4>
 						<ul class="cat-list">
-							<li><a class="justify-content-between d-flex" href="category.html">
-									<p>CDI</p><span>37</span>
-								</a></li>
-							<li><a class="justify-content-between d-flex" href="category.html">
-									<p>CDD</p><span>57</span>
-								</a></li>
-							<li><a class="justify-content-between d-flex" href="category.html">
-									<p>Freelance</p><span>33</span>
-								</a></li>
-								<li><a class="justify-content-between d-flex" href="category.html">
-									<p>Part-Time</p><span>33</span>
-								</a></li>
-								<li><a class="justify-content-between d-flex" href="category.html">
-									<p>Full-Time</p><span>33</span>
-								</a></li>
-								<li><a class="justify-content-between d-flex" href="category.html">
-									<p>Hybrid</p><span>33</span>
-								</a></li>
+							@foreach ($contracts as $contract)
+								<li>
+									<a class="justify-content-between d-flex" href="category.html">
+										<p>{{ $contract->name }}</p>
+										<span>{{ $contract->count }}</span>
+									</a>
+								</li>
+							@endforeach
+
 						</ul>
 					</div>
 
@@ -391,27 +307,14 @@
 					<div class="single-slidebar">
 						<h4>Jobs By Education level</h4>
 						<ul class="cat-list">
-							<li><a class="justify-content-between d-flex" href="category.html">
-									<p>Bac</p><span>33</span>
-								</a></li>
-							<li><a class="justify-content-between d-flex" href="category.html">
-									<p>Bac +1</p><span>33</span>
-								</a></li>
-							<li><a class="justify-content-between d-flex" href="category.html">
-									<p>Bac +2</p><span>33</span>
-								</a></li>
-							<li><a class="justify-content-between d-flex" href="category.html">
-									<p>Bac +3</p><span>33</span>
-								</a></li>
-							<li><a class="justify-content-between d-flex" href="category.html">
-									<p>Bac +4</p><span>33</span>
-								</a></li>
-							<li><a class="justify-content-between d-flex" href="category.html">
-									<p>Bac +5</p><span>33</span>
-								</a></li>
-							<li><a class="justify-content-between d-flex" href="category.html">
-									<p>Bac+6 ou plus</p><span>33</span>
-								</a></li>
+							@foreach ($education_levels as $education)
+								<li>
+									<a class="justify-content-between d-flex" href="category.html">
+										<p>{{ $education->name }}</p>
+										<span>{{ $education->count }}</span>
+									</a>
+								</li>
+							@endforeach
 						</ul>
 					</div>
 
@@ -425,10 +328,6 @@
 	</section>
 	<!-- End post Area -->
 
-
-	
-
-	
 
 	<!-- start footer Area -->
 	<footer class="footer-area section-gap">

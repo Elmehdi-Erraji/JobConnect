@@ -48,9 +48,8 @@ class UserController extends Controller
         return view('admin.users.show',compact('user','userProfile'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
+
     public function edit(string $id)
     {
         $user = User::findOrFail($id);
@@ -68,7 +67,6 @@ class UserController extends Controller
         $user->roles()->sync($request->role);
         $user->status = $request->status;
     
-        // Check if the user is banned and reason field is provided
         if ($request->status == 3 && $request->filled('ban_reason')) {
             $user->ban_reason = $request->input('ban_reason');
         }
