@@ -18,9 +18,7 @@ return new class extends Migration
             $table->string('city')->nullable();
             $table->unsignedBigInteger('user_id')->unique();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('education_level_id')
-                ->nullable()
-                ->constrained('education_levels')
+            $table->foreignId('education_level_id')->nullable()->constrained('education_levels')
                 ->onDelete('cascade');
             $table->foreignId('profession_id')
                 ->nullable()

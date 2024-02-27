@@ -18,9 +18,13 @@
 	<title>Job Connect</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
-	<!--
-			CSS
-			============================================= -->
+    <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
+
+    <!-- Icons css -->
+    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+
+    <!-- Icons css -->
+    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
             <link rel="stylesheet" href="{{ asset('assets/css/css/linearicons.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/css/font-awesome.min.css')}}">
 	<link rel="stylesheet" href="{{ asset('assets/css/css/bootstrap.css') }}">
@@ -46,11 +50,54 @@
 						<li><a href="blog-home.html">Blog</a></li>
 						<li><a href="contact.html">Contact</a></li>
 						<li class="menu-active"><a href="category.html">All Jobs</a></li>
-
-						<li><a class="ticker-btn" href="#">Signup</a></li>
-						<li><a class="ticker-btn" href="#">Login</a></li>
+				
+						@guest
+						<li><a class="ticker-btn" href="{{ route('register') }}">Signup</a></li>
+						<li><a class="ticker-btn" href="{{ route('login') }}">Login</a></li>
+						@else
+						<li class="dropdown">
+							<a class="nav-link dropdown-toggle arrow-none nav-user" data-bs-toggle="dropdown" href="#" role="button"
+							   aria-haspopup="false" aria-expanded="false">
+							   <span class="account-user-avatar">
+								@if (Auth::user()->getFirstMedia('avatars'))
+									 <img src="{{ Auth::user()->getFirstMedia('avatars')->getUrl() }}" class="rounded-circle" alt="Avatar" width="50">
+								 @else
+									 <i class="ri-account-circle-line fs-18 align-middle me-1"></i>
+								 @endif
+							 </span>
+								<span class="d-lg-block d-none">
+									<h5 class="my-0 fw-normal"> <i
+											class="ri-arrow-down-s-line d-none d-sm-inline-block align-middle"></i></h5>
+								</span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-end dropdown-menu-animated profile-dropdown">
+								<!-- item-->
+								<div class=" dropdown-header noti-title">
+									<h6 class="text-overflow m-0">Welcome !</h6>
+								</div>
+				
+								<!-- item-->
+								<a href="{{route('profile.index')}}" class="dropdown-item">
+									<i class="ri-account-circle-line fs-18 align-middle me-1"></i>
+									<span>My Account</span>
+								</a>
+				
+								<!-- item-->
+								<form method="POST" action="{{ route('logout') }}">
+									@csrf
+									<a href="#" class="dropdown-item"
+									   onclick="event.preventDefault();
+										this.closest('form').submit();">
+										<i class="ri-logout-box-line fs-18 align-middle me-1"></i>
+										<span>Logout</span>
+									</a>
+								</form>
+							</div>
+						</li>
+						@endguest
 					</ul>
-				</nav><!-- #nav-menu-container -->
+				</nav>
+				<!-- #nav-menu-container -->
 			</div>
 		</div>
 	</header><!-- #header -->
