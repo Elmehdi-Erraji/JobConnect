@@ -51,7 +51,14 @@ Route::get('/managers', [UserController::class, 'managers'])->name('managers_lis
 Route::resource('profile', ProfileController::class);
 
 
-
+Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
+Route::resource('skills', \App\Http\Controllers\Admin\SkillController::class);
+Route::resource('contracts', \App\Http\Controllers\Admin\ContractController::class);
+Route::resource('profession', \App\Http\Controllers\Admin\ProfessionController::class);
+Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
+Route::resource('entreprise', \App\Http\Controllers\Admin\EntrepriseController::class);
+Route::resource('recuiters', \App\Http\Controllers\REntreprise\RecruiterController::class);
+Route::resource('offers', \App\Http\Controllers\REntreprise\OfferController::class);
 
 
 
