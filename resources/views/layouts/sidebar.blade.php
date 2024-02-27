@@ -237,7 +237,7 @@
                 <div class="collapse" id="sidebarServices">
                     <ul class="side-nav-third-level">
                         <li>
-                            <a href="#">Requests List</a>
+                            <a href="{{route('')}}">Requests List</a>
                         </li>
                     </ul>
                 </div>
@@ -334,21 +334,6 @@
                     <i class="ri-home-3-line"></i>
                     <span> Back Home </span>
                 </a>
-            </li>
-          
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarServices" aria-expanded="false" aria-controls="sidebarServices" class="side-nav-link">
-                    <i class="ri-flag-2-line"></i>
-                    <span> Requests </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="sidebarServices">
-                    <ul class="side-nav-third-level">
-                        <li>
-                            <a href="#">Requests List</a>
-                        </li>
-                    </ul>
-                </div>
             </li>
 
         </ul>

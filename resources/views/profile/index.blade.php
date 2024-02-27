@@ -196,41 +196,19 @@
                                                         <th>Description</th>
                                                         <th>Contract</th>
                                                         <th>Local</th>
-                                                        <th>Status</th>
-                                                        <th>Actions</th>
+                                                       
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-
-                                                    {{-- @foreach($assignedProjects as $assigned)
+                                                        @foreach($applications as $application)
                                                         <tr>
-                                                            <td>{{ $assigned->project->id }}</td>
-                                                            <td>{{ Str::limit(optional($assigned->project)->title, 50, '...') }}</td>
-                                                            <td>{{ Str::limit(optional($assigned->project)->description, 50, '...') }}</td>
-                                                            <td>{{ $assigned->project->budget }}K MAD</td>
-                                                            <td>@if($assigned->approval_status === 0)
-                                                                    <span class="badge bg-info">Pending</span>
-                                                                @elseif($assigned->approval_status === 1)
-                                                                    <span class="badge bg-success">Approved</span>
-                                                                @elseif($assigned->approval_status === 2)
-                                                                    <span class="badge bg-danger">Rejected</span>
-                                                                @endif</td>
-                                                            <td>
-                                                                <div style="display: flex; gap: 5px;">
-                                                                    <a href="{{ route('approval.status', ['project' => $assigned->id]) }}" class="btn btn btn-info">View Details</a>
-
-                                                                    <form id="approvalForm" action="{{ route('approval.status') }}" method="POST">
-                                                                        @csrf
-                                                                        @method('POST')
-                                                                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                                                                        <input type="hidden" name="project_id" value="{{ $assigned->project->id }}">
-                                                                        <button type="submit" name="approval_status" value="1" class="btn btn-success">Accept</button>
-                                                                        <button type="submit" name="approval_status" value="2" class="btn btn-danger">Deny</button>
-                                                                    </form>
-                                                                </div>
-                                                            </td>
+                                                            <td>#</td>
+                                                            <td>{{ $application->title }}</td>
+                                                            <td>{{ $application->description }}</td>
+                                                            <td>{{ $application->contract->name }}</td>
+                                                            <td>{{ $application->local }}</td>
                                                         </tr>
-                                                    @endforeach --}}
+                                                    @endforeach
                                                     </tbody>
                                                 </table>
 
