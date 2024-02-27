@@ -70,10 +70,10 @@
                 <div class="collapse" id="sidebarOffers">
                     <ul class="side-nav-third-level">
                         <li>
-                            <a href="#">Add An Offers</a>
+                            <a href="{{route('offers.create')}}">Add An Offers</a>
                         </li>
                         <li>
-                            <a href="#">Offers List</a>
+                            <a href="{{route('offers.index')}}">Offers List</a>
                         </li>
                     </ul>
                 </div>
