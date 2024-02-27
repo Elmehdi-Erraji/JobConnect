@@ -5,7 +5,7 @@
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
-	<link rel="shortcut icon" href="{{ asset('assets/images/img/fav.png') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 	<!-- Author Meta -->
 	<meta name="author" content="codepixer">
 	<!-- Meta Description -->
@@ -14,18 +14,13 @@
 	<meta name="keywords" content="">
 	<!-- meta character set -->
 	<meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"  crossorigin="anonymous" />
 	<!-- Site Title -->
 	<title>Job Connect</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
-    <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
-
-    <!-- Icons css -->
-    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-
-    <!-- Icons css -->
-    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-            <link rel="stylesheet" href="{{ asset('assets/css/css/linearicons.css') }}">
+	
+	<link rel="stylesheet" href="{{ asset('assets/css/css/linearicons.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/css/font-awesome.min.css')}}">
 	<link rel="stylesheet" href="{{ asset('assets/css/css/bootstrap.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/css/magnific-popup.css') }}">
@@ -34,7 +29,76 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/css/owl.carousel.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/css/main.css') }}">
 </head>
-
+<style>
+	#nav-menu-container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	
+	.nav-menu {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: row;
+	}
+	
+	.nav-menu li {
+		margin-right: 20px;
+	}
+	
+	.burger-menu {
+		display: none;
+	}
+	
+	.burger-icon {
+		width: 30px;
+		height: 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		cursor: pointer;
+	}
+	
+	.line {
+		width: 100%;
+		height: 3px;
+		background-color: black;
+		transition: all 0.3s ease;
+	}
+	
+	@media (max-width: 768px) {
+		.burger-menu {
+			display: block;
+		}
+	
+		.nav-menu {
+			display: none;
+			flex-direction: column;
+			align-items: flex-start;
+			padding: 10px;
+			background-color: #f9f9f9;
+			position: absolute;
+			top: 60px;
+			left: 0;
+			width: 100%;
+		}
+	
+		.nav-menu.active {
+			display: flex;
+		}
+	
+		.nav-menu li {
+			margin-bottom: 10px;
+		}
+	
+		.responsive-item {
+			display: block;
+		}
+	}
+	
+	</style>
 <body>
 
 	<header id="header" id="home">
@@ -44,63 +108,44 @@
 					<a href="index.html" class="text-white"><img src="{{ asset('assets/images/img/logo.png') }}" alt="" title="" />Job Connect</a>
 				</div>
 				<nav id="nav-menu-container">
+					<div class="burger-menu">
+						<div class="burger-icon">
+							<div class="line"></div>
+							<div class="line"></div>
+							<div class="line"></div>
+						</div>
+					</div>
 					<ul class="nav-menu">
-						<li><a href="index.html">Home</a></li>
+						<li class="menu-active"><a href="index.html">Home</a></li>
 						<li><a href="about-us.html">About Us</a></li>
 						<li><a href="blog-home.html">Blog</a></li>
 						<li><a href="contact.html">Contact</a></li>
-						<li class="menu-active"><a href="category.html">All Jobs</a></li>
-				
+						
 						@guest
-						<li><a class="ticker-btn" href="{{ route('register') }}">Signup</a></li>
-						<li><a class="ticker-btn" href="{{ route('login') }}">Login</a></li>
+						<li><a class="ticker-btn" href="{{route('register')}}">Signup</a></li>
+						<li><a class="ticker-btn" href="{{route('login')}}">Login</a></li>
 						@else
-						<li class="dropdown">
-							<a class="nav-link dropdown-toggle arrow-none nav-user" data-bs-toggle="dropdown" href="#" role="button"
-							   aria-haspopup="false" aria-expanded="false">
-							   <span class="account-user-avatar">
-								@if (Auth::user()->getFirstMedia('avatars'))
-									 <img src="{{ Auth::user()->getFirstMedia('avatars')->getUrl() }}" class="rounded-circle" alt="Avatar" width="50">
-								 @else
-									 <i class="ri-account-circle-line fs-18 align-middle me-1"></i>
-								 @endif
-							 </span>
-								<span class="d-lg-block d-none">
-									<h5 class="my-0 fw-normal"> <i
-											class="ri-arrow-down-s-line d-none d-sm-inline-block align-middle"></i></h5>
-								</span>
-							</a>
-							<div class="dropdown-menu dropdown-menu-end dropdown-menu-animated profile-dropdown">
-								<!-- item-->
-								<div class=" dropdown-header noti-title">
-									<h6 class="text-overflow m-0">Welcome !</h6>
-								</div>
-				
-								<!-- item-->
-								<a href="{{route('profile.index')}}" class="dropdown-item">
-									<i class="ri-account-circle-line fs-18 align-middle me-1"></i>
-									<span>My Account</span>
+						<li class="responsive-item">
+							<a class="ticker-btn bg-warning" href="{{route('profile.index')}}">My Account</a>
+						</li>
+						<li class="responsive-item">
+							<form method="POST" action="{{ route('logout') }}">
+								@csrf
+								<a href="#" class="dropdown-item bg-warning"
+								   onclick="event.preventDefault(); this.closest('form').submit();">
+									<i class="ri-logout-box-line fs-18 align-middle me-1"></i>
+									<span>Logout</span>
 								</a>
-				
-								<!-- item-->
-								<form method="POST" action="{{ route('logout') }}">
-									@csrf
-									<a href="#" class="dropdown-item"
-									   onclick="event.preventDefault();
-										this.closest('form').submit();">
-										<i class="ri-logout-box-line fs-18 align-middle me-1"></i>
-										<span>Logout</span>
-									</a>
-								</form>
-							</div>
+							</form>
 						</li>
 						@endguest
 					</ul>
 				</nav>
+				
 				<!-- #nav-menu-container -->
 			</div>
 		</div>
-	</header><!-- #header -->
+	</header>
 
 
 	<!-- start banner Area -->

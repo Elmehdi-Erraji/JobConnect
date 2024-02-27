@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\DashController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Guest\GuestController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +18,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
+
+Route::get('/',[IndexController::class , 'index'])->name('home');
 
 // Route::get('/dashboard', function () {return view('admin.index');})->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -32,17 +36,29 @@ Route::middleware('auth')->group(function () {
     Route::resource('skills', \App\Http\Controllers\Admin\SkillController::class);
     Route::resource('contracts', \App\Http\Controllers\Admin\ContractController::class);
     Route::resource('profession', \App\Http\Controllers\Admin\ProfessionController::class);
-     Route::resource('recuiters', \App\Http\Controllers\REntreprise\RecruiterController::class);
+    Route::resource('recuiters', \App\Http\Controllers\REntreprise\RecruiterController::class);
+
     
     
     Route::resource('entreprise', \App\Http\Controllers\Admin\EntrepriseController::class);
 });
+Route::resource('users', UserController::class);
+
+
+Route::get('/managers', [UserController::class, 'managers'])->name('managers_list');
+
+
+Route::resource('profile', ProfileController::class);
+
+
+Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
+Route::resource('skills', \App\Http\Controllers\Admin\SkillController::class);
+Route::resource('contracts', \App\Http\Controllers\Admin\ContractController::class);
+Route::resource('profession', \App\Http\Controllers\Admin\ProfessionController::class);
 Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
-
-Route::resource('profile', \App\Http\Controllers\ProfileController::class);
-
-
-
+Route::resource('entreprise', \App\Http\Controllers\Admin\EntrepriseController::class);
+Route::resource('recuiters', \App\Http\Controllers\REntreprise\RecruiterController::class);
+Route::resource('offers', \App\Http\Controllers\REntreprise\OfferController::class);
 
 
 
@@ -68,7 +84,7 @@ require __DIR__.'/auth.php';
 
 // Admin    :: mehdi@mail.com
 
-// Manager  :: amin@mail.com 
+// Manager  :: manager@mail.com 
 
 // Recruter :: recruter@mail.com	
 
@@ -92,8 +108,8 @@ require __DIR__.'/auth.php';
 
 
 
-Route::get('myCompanydash', function () {
-    return view('Entreprise.index');
-})->name('myCompanydash');
+Route::get('guest', function () {
+    return view('guest.index');
+})->name('guets');
 
 
