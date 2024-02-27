@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Profession;
 use App\Http\Requests\CreateProfessionRequest;
 use Illuminate\Http\Request;
@@ -14,11 +15,11 @@ class ProfessionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $professions = Profession::all();
+{
+    $professions = Profession::all();
+    return view('admin.profession.index', compact('professions'));
+}
 
-        return view('professions.index', compact('professions'));
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -40,7 +41,7 @@ class ProfessionController extends Controller
     {
         Profession::create($request->validated());
 
-        return redirect()->route('professions.index')
+        return redirect()->route('profession.index')
             ->with('success', 'Profession created successfully.');
     }
 
@@ -91,7 +92,7 @@ class ProfessionController extends Controller
     {
         $profession->delete();
 
-        return redirect()->route('professions.index')
+        return redirect()->route('profession.index')
             ->with('success', 'Profession deleted successfully.');
     }
 }

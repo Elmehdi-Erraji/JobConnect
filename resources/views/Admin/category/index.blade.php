@@ -8,7 +8,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
-
     <!-- Start Content-->
     <div class="container-fluid">
         <!-- start page title -->
@@ -35,13 +34,13 @@
                         <div class="p-3">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <button type="button" class="btn btn-primary" style="width: 30%" data-bs-toggle="modal" data-bs-target="#add-category-modal">Add A Category</button>
-                                    
+                                    <button type="button" class="btn btn-primary" style="width: 40%" data-bs-toggle="modal" data-bs-target="#add-category-modal">Add A Category</button>
+
                                 </div>
                             </div>
                         </div>
 
-                        <div class="table-responsive">
+                        <div class="table-responsive mt-3">
                             <table class="table table-nowrap table-hover mb-0">
                                 <thead>
                                 <tr>
@@ -51,26 +50,25 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Category 1</td>
-                                    <td>
-                                        <button class="btn btn-sm btn-info">Edit</button>
-                                        <button class="btn btn-sm btn-danger">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Category 2</td>
-                                    <td>
-                                        <button class="btn btn-sm btn-info">Edit</button>
-                                        <button class="btn btn-sm btn-danger">Delete</button>
-                                    </td>
-                                </tr>
-                                <!-- Add more rows as needed -->
+                                @foreach($categories as $category)
+                                    <tr>
+                                        <td>{{ $category->id }}</td>
+                                        <td>{{ $category->name }}</td>
+                                        <td>
+                                            <form action="{{ route('category.destroy', $category->id) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger delete-btn">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
+
+
+
                         @if (Session::has('success'))
                             <script>
                                 console.log("SweetAlert initialization script executed!");
@@ -87,14 +85,17 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <form id="add-category-form" action="" method="POST" class="ps-3 pe-3">
+                        <form id="add-category-form" action="{{ route('category.store') }}" method="POST" class="ps-3 pe-3">
                             @csrf
                             <div class="mb-3">
                                 <label for="category-name" class="form-label">Category Name</label>
-                                <input class="form-control" type="text" required id="category-name" name="name" placeholder="Enter category name">
+                                <input class="form-control" type="text"  id="category-name" name="name" placeholder="Enter category name">
+                                @error('name')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="mb-3 text-center">
-                                <button class="btn rounded-pill btn-primary" type="submit">Add Category</button>
+                                <button class="btn rounded-pill btn-primary" type="submit" id="add-category-btn">Add Category</button>
                             </div>
                         </form>
                     </div>

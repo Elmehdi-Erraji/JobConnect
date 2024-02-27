@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\DashController;
+use App\Http\Controllers\Guest\GuestController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,82 +18,82 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {return view('admin.index');})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard',[DashController::class,'index'])->middleware('admin')->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
+    Route::resource('skills', \App\Http\Controllers\Admin\SkillController::class);
+    Route::resource('contracts', \App\Http\Controllers\Admin\ContractController::class);
+    Route::resource('profession', \App\Http\Controllers\Admin\ProfessionController::class);
+     Route::resource('recuiters', \App\Http\Controllers\REntreprise\RecruiterController::class);
+    
+    
+    Route::resource('entreprise', \App\Http\Controllers\Admin\EntrepriseController::class);
 });
+Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
+
+Route::resource('profile', \App\Http\Controllers\ProfileController::class);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 require __DIR__.'/auth.php';
 
-
-
-Route::get('/dashboard', function () {
-    return view('admin.index');
-})->name('admin.index');
+// Route::get('/home', [GuestController::class, 'index']);
 
 
 
 
-Route::get('/users', function () {
-    return view('admin.users.index');
-})->name('admin.users.index');
+// Admin    :: mehdi@mail.com
 
+// Manager  :: amin@mail.com 
 
-Route::get('/users/create', function () {
-    return view('admin.users.create');
-})->name('admin.users.create');
+// Recruter :: recruter@mail.com	
 
+// Condidat :: candidat@mail.com
 
-Route::get('/users/edit', function () {
-    return view('admin.users.edit');
-})->name('admin.users.edit');
+// Test     :: test@mail.com
 
-
-
-Route::get('/entreprise', function () {
-    return view('admin.entreprise.index');
-})->name('admin.entreprise.index');
-
-
-Route::get('/entreprise/create', function () {
-    return view('admin.entreprise.create');
-})->name('admin.entreprise.create');
-
-
-Route::get('/entreprise/edit', function () {
-    return view('admin.entreprise.edit');
-})->name('admin.entreprise.edit');
+// Banned   :: bann@mail.com
 
 
 
 
 
-Route::get('/skills', function () {
-    return view('admin.skills.index');
-})->name('admin.skills.index');
 
 
-Route::get('/profession', function () {
-    return view('admin.profession.index');
-})->name('admin.profession.index');
 
 
-Route::get('/contract', function () {
-    return view('admin.contract.index');
-})->name('admin.contract.index');
 
-Route::get('/education_level', function () {
-    return view('admin.education_level.index');
-})->name('admin.education_level.index');
 
-Route::get('/category', function () {
-    return view('admin.category.index');
-})->name('admin.category.index');
+
+
+
+
+Route::get('myCompanydash', function () {
+    return view('Entreprise.index');
+})->name('myCompanydash');
+
 

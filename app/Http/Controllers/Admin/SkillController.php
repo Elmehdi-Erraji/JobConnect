@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Skill;
 use App\Http\Requests\CreateSkillRequest;
 use Illuminate\Http\Request;
@@ -15,10 +16,12 @@ class SkillController extends Controller
      */
     public function index()
     {
-        $skills = Skill::all();
+    $skills = Skill::all();
 
-        return view('skills.index', compact('skills'));
+        return view('admin.skills.index', compact('skills'));
     }
+
+   
 
     /**
      * Show the form for creating a new resource.

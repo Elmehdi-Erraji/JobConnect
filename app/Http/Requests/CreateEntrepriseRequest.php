@@ -25,7 +25,7 @@ class CreateEntrepriseRequest extends FormRequest
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'status' => 'nullable|integer',
-            'media' => 'nullable|string',
+            'user_id'=> 'required',
         ];
     }
 }

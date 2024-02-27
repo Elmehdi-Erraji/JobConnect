@@ -1,97 +1,95 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Entreprise;
 use App\Http\Requests\CreateEntrepriseRequest;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class EntrepriseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
+{
+    $entreprises = Entreprise::with('entrepriseRepre')->get();
+    return view('admin.entreprise.index', compact('entreprises'));
+}
+
+public function create()
     {
-        $entreprises = Entreprise::all();
+        // Assuming '2' is the role_id for the desired role (you may need to check your database)
+        $role = Role::where('id', 2)->first();
 
-        return view('entreprises.index', compact('entreprises'));
+        if (!$role) {
+            abort(404, 'Role not found'); // Handle the case where the role with ID 2 is not found
+        }
+
+        $users = $role->users;
+
+        return view('admin.entreprise.create', compact('users'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('entreprises.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\CreateEntrepriseRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(CreateEntrepriseRequest $request)
     {
-        Entreprise::create($request->validated());
-
-        return redirect()->route('entreprises.index')
-            ->with('success', 'Entreprise created successfully.');
+         //dd($request->all());
+        $validatedData = $request->validated();
+    
+        // dd($validatedData);
+    
+        $entreprise = Entreprise::create($validatedData);
+        $entreprise->entrepriseRepre()->associate(User::find($validatedData['user_id']));
+        $entreprise->save();
+    
+        return redirect()->route('entreprise.index')->with('success', 'Entreprise created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Entreprise  $entreprise
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Entreprise $entreprise)
+public function show(Entreprise $entreprise)
     {
-        return view('entreprises.show', compact('entreprise'));
+        return view('entreprise.show', compact('entreprise'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Entreprise  $entreprise
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Entreprise $entreprise)
     {
-        return view('entreprises.edit', compact('entreprise'));
+        $role = Role::where('id', 2)->first();
+
+        if (!$role) {
+            abort(404, 'Role not found'); 
+        }
+
+        $users = $role->users;
+        return view('admin.entreprise.edit', compact('entreprise','users'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\CreateEntrepriseRequest  $request
-     * @param  \App\Models\Entreprise  $entreprise
-     * @return \Illuminate\Http\Response
-     */
     public function update(CreateEntrepriseRequest $request, Entreprise $entreprise)
     {
-        $entreprise->update($request->validated());
-
-        return redirect()->route('entreprises.index')
-            ->with('success', 'Entreprise updated successfully.');
+        $validatedData = $request->validated();
+    
+        $entreprise->update($validatedData);
+    
+        if ($validatedData['user_id'] != $entreprise->user_id) {
+           
+            $existingEntreprise = Entreprise::where('user_id', $validatedData['user_id'])->first();
+    
+            if (!$existingEntreprise) {
+               
+                $entreprise->entrepriseRepre()->associate(User::find($validatedData['user_id']));
+                $entreprise->save();
+            } else {
+               
+                return redirect()->back()->withErrors(['user_id' => 'The selected user is already associated with another entreprise.']);
+            }
+        }
+    
+        return redirect()->route('entreprise.index')->with('success', 'Entreprise updated successfully.');
     }
+    
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Entreprise  $entreprise
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Entreprise $entreprise)
     {
         $entreprise->delete();
 
-        return redirect()->route('entreprises.index')
-            ->with('success', 'Entreprise deleted successfully.');
+        return redirect()->route('entreprise.index')->with('success', 'Entreprise deleted successfully.');
     }
 }
