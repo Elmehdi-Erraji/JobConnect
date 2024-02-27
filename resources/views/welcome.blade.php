@@ -29,7 +29,76 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/css/owl.carousel.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/css/main.css') }}">
 </head>
+<style>
+#nav-menu-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-menu li {
+    margin-right: 20px;
+}
+
+.burger-menu {
+    display: none;
+}
+
+.burger-icon {
+    width: 30px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.line {
+    width: 100%;
+    height: 3px;
+    background-color: black;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .burger-menu {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+        background-color: #f9f9f9;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu li {
+        margin-bottom: 10px;
+    }
+
+    .responsive-item {
+        display: block;
+    }
+}
+
+</style>
 <body>
 
 	<header id="header" id="home">
@@ -39,31 +108,41 @@
 					<a href="index.html" class="text-white"><img src="{{ asset('assets/images/img/logo.png') }}" alt="" title="" />Job Connect</a>
 				</div>
 				<nav id="nav-menu-container">
+					<div class="burger-menu">
+						<div class="burger-icon">
+							<div class="line"></div>
+							<div class="line"></div>
+							<div class="line"></div>
+						</div>
+					</div>
 					<ul class="nav-menu">
 						<li class="menu-active"><a href="index.html">Home</a></li>
 						<li><a href="about-us.html">About Us</a></li>
 						<li><a href="blog-home.html">Blog</a></li>
 						<li><a href="contact.html">Contact</a></li>
+						
 						@guest
 						<li><a class="ticker-btn" href="{{route('register')}}">Signup</a></li>
 						<li><a class="ticker-btn" href="{{route('login')}}">Login</a></li>
 						@else
-						
-						<li><a class="ticker-btn bg-warning" href="{{route('profile.index')}}">My Account</a></li>
-						<li>
-								<form method="POST" action="{{ route('logout') }}">
-									@csrf
-									<a href="#" class="dropdown-item bg-warning"
-									   onclick="event.preventDefault();
-										this.closest('form').submit();">
-										<i class="ri-logout-box-line fs-18 align-middle me-1"></i>
-										<span>Logout</span>
-									</a>
-								</form>
+						<li class="responsive-item">
+							<a class="ticker-btn bg-warning" href="{{route('profile.index')}}">My Account</a>
+						</li>
+						<li class="responsive-item">
+							<form method="POST" action="{{ route('logout') }}">
+								@csrf
+								<a href="#" class="dropdown-item bg-warning"
+								   onclick="event.preventDefault(); this.closest('form').submit();">
+									<i class="ri-logout-box-line fs-18 align-middle me-1"></i>
+									<span>Logout</span>
+								</a>
+							</form>
 						</li>
 						@endguest
 					</ul>
-				</nav><!-- #nav-menu-container -->
+				</nav>
+				
+				<!-- #nav-menu-container -->
 			</div>
 		</div>
 	</header><!-- #header -->
@@ -418,7 +497,13 @@
 		</div>
 	</footer>
 	<!-- End footer Area -->
-
+<script>
+	$(document).ready(function() {
+    $('.burger-menu').click(function() {
+        $('.nav-menu').toggleClass('active');
+    });
+});
+</script>
 	
 	<script src="{{ asset('assets/js/js/vendor/jquery-2.2.4.min.js') }}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"

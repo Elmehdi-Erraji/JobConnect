@@ -83,28 +83,16 @@
         </div>
         <!-- end row -->
     </div>
-    @if (Session::has('status'))
-        @if (Session::get('status_code') == 0)
-            <script>
-                Swal.fire({
-                    icon: 'warning',
-                    title: '{{ Session::get("status") }}',
-                    showConfirmButton: false,
-                    timer: 3000,
-                });
-            </script>
-        @elseif (Session::get('status_code') == 1)
-            <script>
-                Swal.fire({
-                    icon: 'info',
-                    title: '{{ Session::get("status") }}',
-                    showConfirmButton: false,
-                    timer: 3000,
-                });
-            </script>
-        @endif
-
-    @endif
+    @if (Session::has('message'))
+    <script>
+        console.log("SweetAlert initialization script executed!");
+        Swal.fire({
+            title: 'Message',
+            text: "{{ Session::get('message') }}",
+            icon: 'info'
+        });
+    </script>
+@endif                               
     <!-- end container -->
 </div>
 <!-- end page -->
