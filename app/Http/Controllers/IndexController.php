@@ -16,8 +16,8 @@ class IndexController extends Controller
         $education_levels = EducationLevel::all();
         $offers = Offer::all();
         $categories = Category::latest()->take(6)->get();
-
-        return view ('welcome',compact('contracts','education_levels','offers','categories'));
+        $offers = Offer::with('educationLevel', 'profession', 'category','contract','entreprise')->get();
+        return view ('welcome',compact('contracts','education_levels','offers','categories','offers'));
 
     }
 }
