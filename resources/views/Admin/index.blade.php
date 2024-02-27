@@ -34,18 +34,7 @@
                             <i class="ri-group-2-line widget-icon"></i>
                         </div>
                         <h6 class="text-uppercase mt-0" title="Users">Users</h6>
-                        <h2 class="my-2">0</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xxl-3 col-sm-6">
-                <div class="card widget-flat text-bg-purple">
-                    <div class="card-body">
-                        <div class="float-end">
-                            <i class="ri-building-4-line widget-icon"></i>
-                        </div>
-                        <h6 class="text-uppercase mt-0" title="Partners">Partners</h6>
-                        <h2 class="my-2">0</h2>
+                        <h2 class="my-2">{{$userCount}}</h2>
                     </div>
                 </div>
             </div>
@@ -55,11 +44,23 @@
                         <div class="float-end">
                             <i class="ri-folder-line widget-icon"></i>
                         </div>
-                        <h6 class="text-uppercase mt-0" title="Projects">Projects</h6>
-                        <h2 class="my-2">0</h2>
+                        <h6 class="text-uppercase mt-0" title="Projects">Offers</h6>
+                        <h2 class="my-2">{{$offerCount}}</h2>
                     </div>
                 </div>
             </div>
+            <div class="col-xxl-3 col-sm-6">
+                <div class="card widget-flat text-bg-purple">
+                    <div class="card-body">
+                        <div class="float-end">
+                            <i class="ri-building-4-line widget-icon"></i>
+                        </div>
+                        <h6 class="text-uppercase mt-0" title="Partners">Entreprises</h6>
+                        <h2 class="my-2">{{$enterpriseCount}}</h2>
+                    </div>
+                </div>
+            </div>
+            
 
             <div class="col-xxl-3 col-sm-6">
                 <div class="card widget-flat text-bg-secondary">
@@ -67,8 +68,8 @@
                         <div class="float-end">
                             <i class="ri-mail-line widget-icon"></i>
                         </div>
-                        <h6 class="text-uppercase mt-0" title="Requests">Requests</h6>
-                        <h2 class="my-2">0</h2>
+                        <h6 class="text-uppercase mt-0" title="Requests">Pending Requests</h6>
+                        <h2 class="my-2">{{$requestCount}}</h2>
                     </div>
                 </div>
             </div>
