@@ -22,6 +22,7 @@ class Entreprise extends Model implements HasMedia
         ->withPivot('role_id');
 }
 
+
 public function Recrut()
 {
     return $this->belongsToMany(User::class, 'entreprise_user', 'entreprise_id', 'user_id')

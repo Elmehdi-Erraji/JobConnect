@@ -37,7 +37,7 @@ Route::resource('profession', \App\Http\Controllers\Admin\ProfessionController::
 Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
 Route::resource('entreprise', \App\Http\Controllers\Admin\EntrepriseController::class);
 Route::resource('recuiters', \App\Http\Controllers\REntreprise\RecruiterController::class);
-
+Route::resource('offers', \App\Http\Controllers\REntreprise\OfferController::class);
 
 Route::resource('profile', \App\Http\Controllers\ProfileController::class);
 

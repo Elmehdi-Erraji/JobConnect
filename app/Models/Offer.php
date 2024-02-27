@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Offer extends Model
 {
-    use HasFactory,SoftDeletes;
-    protected $fillable = ['title', 'domain', 'local', 'salary', 'description'];
+    use HasFactory;
+    protected $fillable = ['title', 'domain', 'local', 'salary', 'description','created_by','education_level_id','profession_id','category_id','contract_id','entreprise_id'];
 
     public function educationLevel()
     {
