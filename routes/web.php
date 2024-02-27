@@ -37,10 +37,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('contracts', \App\Http\Controllers\Admin\ContractController::class);
     Route::resource('profession', \App\Http\Controllers\Admin\ProfessionController::class);
     Route::resource('recuiters', \App\Http\Controllers\REntreprise\RecruiterController::class);
-
-    
-    
     Route::resource('entreprise', \App\Http\Controllers\Admin\EntrepriseController::class);
+
+    Route::post('apply',[IndexController::class,'apply'])->name('apply');
+
 });
 Route::resource('users', UserController::class);
 

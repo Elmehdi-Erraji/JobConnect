@@ -30,6 +30,8 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/css/animate.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/css/owl.carousel.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/css/main.css') }}">
+
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <style>
 #nav-menu-container {
@@ -310,7 +312,19 @@
 									<h6>{{ $offer->entreprise->name }}</h6>
 								</div>
 								<ul class="btns">
-									<li><a href="#">Apply</a></li>
+									@guest
+										
+									<li><a href="{{route('login')}}">Apply</a></li>
+									@else
+									<li>
+										<form id="jobApplicationForm" action="{{ route('apply') }}" method="POST" style="display: inline-block;">
+											@csrf
+											<input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+											<input type="hidden" name="job_id" value="{{ $offer->id }}">
+											<button type="submit" class="btn btn-warning">Apply</button>
+										</form>
+									</li>
+									@endguest
 								</ul>
 							</div>
 							<p>{{ $offer->description }}</p>
@@ -319,22 +333,17 @@
 							<p class="address"><span class="lnr lnr-database"></span> {{ $offer->salary }} DH</p>
 						</div>
 					</div>
-				@endforeach
+					@endforeach
 				
-
-
-					
-
-					<a class="text-uppercase loadmore-btn mx-auto d-block" href="category.html">Load More job Posts</a>
-
 				</div>
+
 				<div class="col-lg-4 sidebar">
 					<div class="single-slidebar">
 						<h4>Jobs by Contrat</h4>
 						<ul class="cat-list">
 							@foreach ($contracts as $contract)
 								<li>
-									<a class="justify-content-between d-flex" href="category.html">
+									<a class="justify-content-between d-flex" href="#">
 										<p>{{ $contract->name }}</p>
 										<span>{{ $contract->count }}</span>
 									</a>
@@ -350,7 +359,7 @@
 						<ul class="cat-list">
 							@foreach ($education_levels as $education)
 								<li>
-									<a class="justify-content-between d-flex" href="category.html">
+									<a class="justify-content-between d-flex" href="#">
 										<p>{{ $education->name }}</p>
 										<span>{{ $education->count }}</span>
 									</a>
@@ -369,7 +378,12 @@
 	</section>
 	<!-- End post Area -->
 
-
+	@if (Session::has('success'))
+	<script>
+		console.log("SweetAlert initialization script executed!");
+		Swal.fire("Success", "{{ Session::get('success') }}", 'success');
+	</script>
+@endif
 	<!-- start footer Area -->
 	<footer class="footer-area section-gap">
 		<div class="container">
