@@ -23,6 +23,7 @@ return new class extends Migration
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('cascade');
             $table->foreignId('contract_id')->nullable()->constrained('contracts')->onDelete('cascade');
             $table->foreignId('entreprise_id')->nullable()->constrained('entreprises')->onDelete('cascade');
+            $table->unsignedBigInteger('created_by'); 
             $table->timestamps();
         });
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Guest\GuestController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -32,14 +33,19 @@ Route::middleware('auth')->group(function () {
     Route::resource('skills', \App\Http\Controllers\Admin\SkillController::class);
     Route::resource('contracts', \App\Http\Controllers\Admin\ContractController::class);
     Route::resource('profession', \App\Http\Controllers\Admin\ProfessionController::class);
-     Route::resource('recuiters', \App\Http\Controllers\REntreprise\RecruiterController::class);
+    Route::resource('recuiters', \App\Http\Controllers\REntreprise\RecruiterController::class);
+
     
     
     Route::resource('entreprise', \App\Http\Controllers\Admin\EntrepriseController::class);
 });
-Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
+Route::resource('users', UserController::class);
 
-Route::resource('profile', \App\Http\Controllers\ProfileController::class);
+
+Route::get('/managers', [UserController::class, 'managers'])->name('managers_list');
+
+
+Route::resource('profile', ProfileController::class);
 
 
 
@@ -68,7 +74,7 @@ require __DIR__.'/auth.php';
 
 // Admin    :: mehdi@mail.com
 
-// Manager  :: amin@mail.com 
+// Manager  :: manager@mail.com 
 
 // Recruter :: recruter@mail.com	
 
