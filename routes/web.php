@@ -36,6 +36,7 @@ Route::resource('contracts', \App\Http\Controllers\Admin\ContractController::cla
 Route::resource('profession', \App\Http\Controllers\Admin\ProfessionController::class);
 Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
 Route::resource('entreprise', \App\Http\Controllers\Admin\EntrepriseController::class);
+Route::resource('recuiters', \App\Http\Controllers\REntreprise\RecruiterController::class);
 
 
 Route::resource('profile', \App\Http\Controllers\ProfileController::class);
@@ -75,7 +76,9 @@ Route::get('test', function () {
 })->name('test');
 
 
-
+Route::get('myCompanydash', function () {
+    return view('Entreprise.index');
+})->name('myCompanydash');
 
 
 
