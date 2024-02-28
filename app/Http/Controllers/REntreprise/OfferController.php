@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Contract;
 use App\Models\EducationLevel;
 use App\Models\Profession;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -79,4 +80,20 @@ public function store(OfferRequest $request)
 
         return redirect()->route('offers.index')->with('success', 'Offer deleted successfully.');
     }
+
+
+    public function offersApplications()
+{
+    $userId = Auth::id();
+
+  
+
+    $applications = DB::table('offer_user')
+    ->join('users', 'offer_user.user_id', '=', 'users.id')
+    ->join('offers', 'offer_user.offer_id', '=', 'offers.id')
+    ->select('users.name as user_name', 'offers.title as offer_title', 'offer_user.request_status')
+    ->get();
+
+    return view('Entreprise.offer.application', compact('applications'));
+}
 }

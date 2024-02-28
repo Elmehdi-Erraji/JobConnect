@@ -30,6 +30,8 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/css/animate.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/css/owl.carousel.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/css/main.css') }}">
+
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <style>
 #nav-menu-container {
@@ -98,6 +100,55 @@
     .responsive-item {
         display: block;
     }
+}
+.single-post {
+    margin-bottom: 20px;
+}
+
+.thumb {
+    margin-right: 20px;
+}
+
+.details {
+    flex: 1;
+}
+
+.title {
+    margin-bottom: 10px;
+}
+
+.title h4 {
+    margin-bottom: 5px;
+}
+
+.title h6 {
+    margin-bottom: 0;
+}
+
+.tags {
+    margin-bottom: 10px;
+}
+
+.tags li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.tags li:last-child {
+    margin-right: 0;
+}
+
+.btns li {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.btns li:first-child {
+    margin-left: 0;
+}
+
+.address {
+    margin-bottom: 5px;
 }
 
 </style>
@@ -246,54 +297,53 @@
 					</ul>
 					
 						
+					@foreach ($offers as $offer)
 					<div class="single-post d-flex flex-row">
 						<div class="thumb">
 							<img src="{{ asset('assets/images/img/post.png') }}" alt="">
 							<ul class="tags">
-								<li>
-									<a href="#">Art</a>
-								</li>
-								<li>
-									<a href="#">Media</a>
-								</li>
-								<li>
-									<a href="#">Design</a>
-								</li>
+								<li><a href="#">{{ $offer->category->name }}</a></li>
 							</ul>
 						</div>
 						<div class="details">
 							<div class="title d-flex flex-row justify-content-between">
 								<div class="titles">
-									<a href="single.html">
-										<h4>Creative Art Designer</h4>
-									</a>
-									<h6>Premium Labels Limited</h6>
+									<a href="single.html"><h4>{{ $offer->title }}</h4></a>
+									<h6>{{ $offer->entreprise->name }}</h6>
 								</div>
 								<ul class="btns">
-									
-									<li><a href="#">Apply</a></li>
+									@guest
+										
+									<li><a href="{{route('login')}}">Apply</a></li>
+									@else
+									<li>
+										<form id="jobApplicationForm" action="{{ route('apply') }}" method="POST" style="display: inline-block;">
+											@csrf
+											<input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+											<input type="hidden" name="job_id" value="{{ $offer->id }}">
+											<button type="submit" class="btn btn-warning">Apply</button>
+										</form>
+									</li>
+									@endguest
 								</ul>
 							</div>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc
-								ididunt ut dolore magna aliqua.
-							</p>
-							<h5>Job Nature: Full time</h5>
-							<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-							<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
+							<p>{{ $offer->description }}</p>
+							<h5>Contract Nature: {{ $offer->contract->name }}</h5>
+							<p class="address"><span class="lnr lnr-map"></span> {{ $offer->local }}</p>
+							<p class="address"><span class="lnr lnr-database"></span> {{ $offer->salary }} DH</p>
 						</div>
 					</div>
-
-					<a class="text-uppercase loadmore-btn mx-auto d-block" href="category.html">Load More job Posts</a>
-
+					@endforeach
+				
 				</div>
+
 				<div class="col-lg-4 sidebar">
 					<div class="single-slidebar">
 						<h4>Jobs by Contrat</h4>
 						<ul class="cat-list">
 							@foreach ($contracts as $contract)
 								<li>
-									<a class="justify-content-between d-flex" href="category.html">
+									<a class="justify-content-between d-flex" href="#">
 										<p>{{ $contract->name }}</p>
 										<span>{{ $contract->count }}</span>
 									</a>
@@ -309,7 +359,7 @@
 						<ul class="cat-list">
 							@foreach ($education_levels as $education)
 								<li>
-									<a class="justify-content-between d-flex" href="category.html">
+									<a class="justify-content-between d-flex" href="#">
 										<p>{{ $education->name }}</p>
 										<span>{{ $education->count }}</span>
 									</a>
@@ -328,7 +378,12 @@
 	</section>
 	<!-- End post Area -->
 
-
+	@if (Session::has('success'))
+	<script>
+		console.log("SweetAlert initialization script executed!");
+		Swal.fire("Success", "{{ Session::get('success') }}", 'success');
+	</script>
+@endif
 	<!-- start footer Area -->
 	<footer class="footer-area section-gap">
 		<div class="container">

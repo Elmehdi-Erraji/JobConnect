@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Guest\GuestController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\REntreprise\OfferController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,7 @@ Route::get('/',[IndexController::class , 'index'])->name('home');
 // Route::get('/dashboard', function () {return view('admin.index');})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboard',[DashController::class,'index'])->middleware('admin')->name('dashboard');
+Route::get('/applications',[DashController::class,'index'])->middleware('admin')->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -37,10 +39,12 @@ Route::middleware('auth')->group(function () {
     Route::resource('contracts', \App\Http\Controllers\Admin\ContractController::class);
     Route::resource('profession', \App\Http\Controllers\Admin\ProfessionController::class);
     Route::resource('recuiters', \App\Http\Controllers\REntreprise\RecruiterController::class);
-
-    
-    
     Route::resource('entreprise', \App\Http\Controllers\Admin\EntrepriseController::class);
+
+    Route::post('apply',[IndexController::class,'apply'])->name('apply');
+
+    Route::get('applications',[OfferController::class,'offersApplications'])->name('applications');
+
 });
 Route::resource('users', UserController::class);
 
@@ -55,7 +59,7 @@ Route::resource('category', \App\Http\Controllers\Admin\CategoryController::clas
 Route::resource('skills', \App\Http\Controllers\Admin\SkillController::class);
 Route::resource('contracts', \App\Http\Controllers\Admin\ContractController::class);
 Route::resource('profession', \App\Http\Controllers\Admin\ProfessionController::class);
-Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
+Route::resource('users', UserController::class);
 Route::resource('entreprise', \App\Http\Controllers\Admin\EntrepriseController::class);
 Route::resource('recuiters', \App\Http\Controllers\REntreprise\RecruiterController::class);
 Route::resource('offers', \App\Http\Controllers\REntreprise\OfferController::class);
@@ -86,7 +90,7 @@ require __DIR__.'/auth.php';
 
 // Manager  :: manager@mail.com 
 
-// Recruter :: recruter@mail.com	
+// Recruter :: recruter@mail.com	//removed
 
 // Condidat :: candidat@mail.com
 
