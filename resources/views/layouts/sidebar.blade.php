@@ -231,13 +231,13 @@
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarServices" aria-expanded="false" aria-controls="sidebarServices" class="side-nav-link">
                     <i class="ri-flag-2-line"></i>
-                    <span> Condidats </span>
+                    <span> Applications </span>
                     <span class="menu-arrow"></span>
                 </a>
                 <div class="collapse" id="sidebarServices">
                     <ul class="side-nav-third-level">
                         <li>
-                            <a href="{{route('')}}">Requests List</a>
+                            <a href="{{route('applications')}}">Applications List</a>
                         </li>
                     </ul>
                 </div>
