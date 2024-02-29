@@ -110,10 +110,3 @@ require __DIR__.'/auth.php';
 
 
 
-
-
-Route::get('guest', function () {
-    return view('guest.index');
-})->name('guets');
-
-

@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\DB;
 
 class OfferController extends Controller
 {
-
-
-    public function create()
+        public function create()
 {
     // Fetch data for dropdowns
     $educationLevels = EducationLevel::all();
